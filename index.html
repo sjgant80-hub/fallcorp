@@ -129,6 +129,7 @@ body{background:radial-gradient(ellipse at top, rgba(139,26,26,.06), transparent
 </style>
 <script src="https://sjgant80-hub.github.io/fall-euaiact/cdn/audit-shim.js" data-tool="fallcorp" data-tier="full" defer></script>
 <script src="https://sjgant80-hub.github.io/fall-euaiact/cdn/nas-shim.js" data-tool="fallcorp" data-organ="L9.window-manager.smb"></script>
+<script src="https://sjgant80-hub.github.io/fall-euaiact/cdn/fall-forge.js" defer></script>
 </head>
 <body>
 
@@ -160,6 +161,7 @@ body{background:radial-gradient(ellipse at top, rgba(139,26,26,.06), transparent
       </div>
       <div class="topbar-actions">
         <button class="btn" id="btn-anatomy">Anatomy</button>
+        <button class="btn" id="btn-forge" title="Need an organ that doesn't exist? Forge one.">◊ Forge</button>
         <button class="btn" id="btn-identity">Identity</button>
         <button class="btn" id="btn-brand">Brand</button>
         <a class="btn" id="btn-open-new" href="#" target="_blank" style="display:none">Open ↗</a>
@@ -660,6 +662,75 @@ window.addEventListener('DOMContentLoaded', async () => {
   welcomeNode = $('#welcome');
 
   $('#btn-anatomy').onclick = () => openModal('anatomy-modal');
+
+  // ─── ◊·κ=φ⁴ · FallForge wiring ──────────────────────────────
+  async function refreshForgedSidebar() {
+    if (!window.FallForge) return;
+    try {
+      const items = await window.FallForge.listLocalOrgans();
+      // strip any prior forge entries from ORGANS to avoid duplicates
+      ORGANS = ORGANS.filter(o => o._source !== 'fall-forge');
+      for (const it of items) {
+        ORGANS.push({
+          name: it.name,
+          purpose: 'forged · ' + (it.domain || '') + (it.brand?.name ? ' · ' + it.brand.name : ''),
+          category: 'forged',
+          url: it.blobUrl,
+          source: null,
+          tier: 'A',
+          status: 'live',
+          prime: it.prime,
+          _source: 'fall-forge',
+          _forgedId: it.id,
+        });
+      }
+      // re-route every forged organ into the "forged" department
+      DEPARTMENTS.forEach(d => { /* untouched */ });
+      // add (or update) a 'forged' department once
+      if (!DEPARTMENTS.find(d => d.id === 'forged')) {
+        DEPARTMENTS.push({ id:'forged', glyph:'◊', name:'Forged (this fork)',
+                           match:[/^forged$/], hint:[] });
+      }
+      // bias the dept picker for forge organs
+      ORGANS.filter(o => o._source === 'fall-forge').forEach(o => { o._dept = 'forged'; });
+      $('#organ-count').textContent = ORGANS.length;
+      $('#qs-organs').textContent = ORGANS.length;
+      renderSidebar();
+      renderDepts();
+    } catch(_) {}
+  }
+
+  // open the forge wizard pre-filled with this fork's context
+  $('#btn-forge').onclick = () => {
+    if (!window.FallForge) { alert('FallForge CDN still loading · give it a second.'); return; }
+    window.FallForge.openWizard({
+      context: {
+        konomi_pub: state.konomi.pub,
+        brand: {
+          name: state.brand.name || 'My Co',
+          primary_color: '#b8974a',
+        },
+        fallmind_namespace: window.nas?.fork?.fallmind_namespace || ('fork-' + (state.konomi.pub || '').slice(0, 8)),
+      },
+      onForged: async (organ) => { await refreshForgedSidebar(); },
+    });
+  };
+
+  // listen for forge events from anywhere
+  try {
+    const ffCh = new BroadcastChannel('fall-signal');
+    ffCh.onmessage = (e) => {
+      const m = e.data;
+      if (m && (m.kind === 'fall-forge:organ_minted' || m.kind === 'fall-forge:organ_deleted')) {
+        refreshForgedSidebar();
+      }
+    };
+  } catch(_) {}
+
+  // wait for FallForge to be ready then surface any prior local forges
+  document.addEventListener('fall-forge:ready', refreshForgedSidebar);
+  if (window.FallForge) refreshForgedSidebar();
+
   $('#btn-identity').onclick = () => {
     $('#id-pub').textContent = state.konomi.pub || '(no key)';
     $('#id-source').textContent = state.konomi.source;
