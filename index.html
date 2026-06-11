@@ -185,6 +185,10 @@ body{background:radial-gradient(ellipse at top, rgba(139,26,26,.06), transparent
             <div class="qstat"><div class="v" id="qs-contacts">0</div><div class="k">contacts shared</div></div>
           </div>
 
+          <h2>Start here</h2>
+          <p style="color:var(--dim);font-size:13px;margin:0 0 10px">Three organs that bootstrap the rest. Open them first.</p>
+          <div class="dept-grid" id="pin-grid" style="margin-bottom:20px"></div>
+
           <h2>The 9-layer company anatomy</h2>
           <div class="anatomy" id="anatomy"></div>
 
@@ -301,11 +305,15 @@ const DEPARTMENTS = [
 
 // ── KNOWN EXTRA ORGANS not always in registry yet ──────────────────
 const EXTRAS = [
+  { name:'FallLearn v2', url:'https://sjgant80-hub.github.io/falllearn/',   source:'https://github.com/sjgant80-hub/falllearn',   kind:'app', category:'tutor', purpose:'L8 of the AIOS · the adaptive sovereign tutor · teaches you to expand your fork', tier:'A', status:'live', prime:5 },
   { name:'FallCorp',    url:'https://sjgant80-hub.github.io/fallcorp/',    source:'https://github.com/sjgant80-hub/fallcorp',    kind:'app', category:'meta', purpose:'The company AIOS · 9-layer SMB shell · this tool', tier:'A', status:'live', prime:1327 },
-  { name:'FallStack',   url:'https://sjgant80-hub.github.io/fallstack/',   source:'https://github.com/sjgant80-hub/fallstack',   kind:'app', category:'audit', purpose:'SaaS audit + sovereign migration engine', tier:'A', status:'live', prime:1321 },
+  { name:'FallStack',   url:'https://sjgant80-hub.github.io/fallstack/',   source:'https://github.com/sjgant80-hub/fallstack',   kind:'app', category:'audit', purpose:'SaaS audit + sovereign migration engine · L2 bootloader for the corp fork', tier:'A', status:'live', prime:1321 },
   { name:'FallScribe',  url:'https://sjgant80-hub.github.io/fallscribe/',  source:'https://github.com/sjgant80-hub/fallscribe',  kind:'app', category:'ops', purpose:'Sovereign meeting notes · Granola wedge', tier:'A', status:'live', prime:1319 },
   { name:'FallBack',    url:'https://sjgant80-hub.github.io/fallback/',    source:'https://github.com/sjgant80-hub/fallback',    kind:'app', category:'rights', purpose:'Rights & refund engine · cancel/refund/claim', tier:'A', status:'live', prime:1307 },
 ];
+
+// ── START HERE pins (shown at the top of the dashboard) ────────────
+const PINS = ['FallLearn v2', 'FallStack', 'FallCorp'];
 
 // =====================================================================
 // STATE + INDEXEDDB
@@ -517,7 +525,29 @@ function renderAnatomy() {
   }
 }
 
+function renderPins() {
+  const wrap = $('#pin-grid');
+  if (!wrap) return;
+  wrap.innerHTML = '';
+  for (const name of PINS) {
+    const o = ORGANS.find(x => x.name === name);
+    if (!o) continue;
+    const card = document.createElement('div');
+    card.className = 'dept';
+    card.style.borderColor = 'var(--brass)';
+    card.style.background = 'rgba(184,151,74,.05)';
+    card.innerHTML = `
+      <div class="head"><span>◊ ${escapeHtml(o.name)}</span><span>tier ${o.tier||'A'}</span></div>
+      <div class="nm">${escapeHtml(o.name)}</div>
+      <div class="tools" style="color:var(--cream);opacity:.9">${escapeHtml(o.purpose || '')}</div>
+    `;
+    card.onclick = () => loadOrgan(o);
+    wrap.appendChild(card);
+  }
+}
+
 function renderDepts() {
+  renderPins();
   const wrap = $('#dept-grid');
   wrap.innerHTML = '';
   for (const d of DEPARTMENTS) {
