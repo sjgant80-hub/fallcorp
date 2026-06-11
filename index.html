@@ -6,111 +6,125 @@
 <meta name="aios-organ" content="fallcorp" />
 <meta name="aios-layer" content="L9.window-manager.smb" />
 <meta name="prime" content="1327" />
-<meta name="description" content="◊ FallCorp · the bundled sovereign SMB stack · 17 organs in one shell · shared contacts · Konomi SSO · single-file · MIT" />
-<title>◊ FallCorp · your company on free organs · all in one tab</title>
+<meta name="description" content="◊ FallCorp · the sovereign company AIOS · every Fall organ in one shell · department mapping · Konomi SSO · MIT" />
+<title>◊ FallCorp · the sovereign company AIOS</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext x='2' y='26' font-size='28' fill='%23b8974a'%3E%E2%97%8A%3C/text%3E%3C/svg%3E" />
 <style>
 :root{
   --ox:#8b1a1a; --brass:#b8974a; --cream:#c4bfb2; --void:#0b0a0f;
   --green:#3a7d3a; --dim:#7c7466; --line:rgba(184,151,74,.2);
   --warm:#d4a857;
-  --sidebar-w:240px;
+  --sidebar-w:260px;
 }
 *,*::before,*::after{box-sizing:border-box}
 html,body{margin:0;padding:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--void);color:var(--cream);height:100vh;line-height:1.5;overflow:hidden}
 body{background:radial-gradient(ellipse at top, rgba(139,26,26,.06), transparent 55%),radial-gradient(ellipse at bottom, rgba(184,151,74,.04), transparent 55%),var(--void)}
 
-/* Layout · sidebar + main */
 .app{display:flex;height:100vh}
-.sidebar{width:var(--sidebar-w);background:rgba(0,0,0,.45);border-right:1px solid var(--line);display:flex;flex-direction:column;flex-shrink:0;overflow-y:auto}
+.sidebar{width:var(--sidebar-w);background:rgba(0,0,0,.5);border-right:1px solid var(--line);display:flex;flex-direction:column;flex-shrink:0;overflow:hidden}
 .main{flex:1;display:flex;flex-direction:column;min-width:0}
 
-/* Brand block */
-.brand{padding:18px 16px;border-bottom:1px solid var(--line)}
-.brand .logo{font-family:'IBM Plex Mono',monospace;font-size:18px;color:var(--brass);letter-spacing:.05em}
-.brand .name{font-family:'Libre Baskerville',serif;font-size:14px;color:var(--cream);margin-top:6px}
-.brand .meta{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.12em;margin-top:6px;word-break:break-all}
+.brand{padding:16px 16px 14px;border-bottom:1px solid var(--line)}
+.brand .logo{font-family:'IBM Plex Mono',monospace;font-size:15px;color:var(--brass);letter-spacing:.05em}
+.brand .name{font-family:'Libre Baskerville',serif;font-size:15px;color:var(--cream);margin-top:4px}
+.brand .meta{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.1em;margin-top:4px}
 
-/* Navigation */
-.nav{padding:8px 0;flex:1}
-.nav-section{padding:14px 16px 6px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--dim);text-transform:uppercase;letter-spacing:.18em}
-.nav-item{display:flex;align-items:center;gap:10px;padding:9px 16px;font-size:13px;color:var(--cream);cursor:pointer;border-left:2px solid transparent;transition:all .15s;text-decoration:none;border-bottom:none}
-.nav-item:hover{background:rgba(184,151,74,.06);border-left-color:var(--brass)}
+.sb-search{padding:10px 12px;border-bottom:1px solid var(--line)}
+.sb-search input{width:100%;padding:8px 12px;background:rgba(0,0,0,.4);border:1px solid var(--line);color:var(--cream);font-family:inherit;font-size:13px;border-radius:2px;outline:none}
+.sb-search input:focus{border-color:var(--brass)}
+
+.nav{padding:6px 0;flex:1;overflow-y:auto}
+.nav-section{padding:14px 16px 4px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--brass);text-transform:uppercase;letter-spacing:.2em;display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none}
+.nav-section .count{color:var(--dim);font-size:10px}
+.nav-section .caret{color:var(--dim);transition:transform .15s}
+.nav-section.collapsed .caret{transform:rotate(-90deg)}
+.nav-section.collapsed + .nav-items{display:none}
+.nav-items{}
+.nav-item{display:flex;align-items:center;gap:9px;padding:7px 16px 7px 22px;font-size:12px;color:var(--cream);cursor:pointer;border-left:2px solid transparent;transition:all .12s;text-decoration:none}
+.nav-item:hover{background:rgba(184,151,74,.05);border-left-color:var(--brass)}
 .nav-item.active{background:rgba(184,151,74,.1);border-left-color:var(--brass);color:var(--brass)}
-.nav-item .icon{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--brass);width:18px}
-.nav-item .partial-dot{margin-left:auto;width:6px;height:6px;border-radius:50%;background:var(--warm)}
+.nav-item .glyph{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--brass);width:14px;flex-shrink:0}
+.nav-item .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nav-item .tier{font-size:9px;color:var(--dim);font-family:'IBM Plex Mono',monospace;padding:1px 4px;border:1px solid var(--line);border-radius:1px}
 
-/* Footer in sidebar */
-.sidebar-footer{padding:12px 16px;border-top:1px solid var(--line);font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--dim)}
-.sidebar-footer a{color:var(--brass);text-decoration:none;display:block;padding:4px 0}
+.sidebar-footer{padding:10px 16px;border-top:1px solid var(--line);font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--dim)}
+.sidebar-footer a{color:var(--brass);text-decoration:none;display:block;padding:3px 0}
 
-/* Main content area */
-.topbar{padding:12px 20px;border-bottom:1px solid var(--line);background:rgba(0,0,0,.35);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;flex-shrink:0}
-.topbar-title{font-family:'Libre Baskerville',serif;font-size:18px;color:var(--cream)}
-.topbar-meta{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.1em}
-.topbar-actions{display:flex;gap:8px}
-.btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;background:transparent;border:1px solid var(--brass);color:var(--brass);font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.12em;cursor:pointer;border-radius:2px;transition:all .15s;text-decoration:none}
+.topbar{padding:11px 22px;border-bottom:1px solid var(--line);background:rgba(0,0,0,.4);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;flex-shrink:0}
+.topbar-title{font-family:'Libre Baskerville',serif;font-size:17px;color:var(--cream)}
+.topbar-meta{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
+.topbar-actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:6px 13px;background:transparent;border:1px solid var(--brass);color:var(--brass);font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.1em;cursor:pointer;border-radius:2px;transition:all .12s;text-decoration:none}
 .btn:hover{background:var(--brass);color:var(--void)}
 .btn.primary{background:var(--brass);color:var(--void)}
 .btn.primary:hover{background:var(--cream);border-color:var(--cream)}
 
-.content{flex:1;display:flex;overflow:hidden;position:relative}
-.frame-wrap{flex:1;position:relative;background:var(--void)}
+.content{flex:1;display:flex;overflow:hidden;position:relative;background:var(--void)}
+.frame-wrap{flex:1;position:relative}
 .frame-wrap iframe{width:100%;height:100%;border:none;background:#fff}
 
-/* Welcome / dashboard view (when no organ selected) */
-.welcome{padding:48px;overflow-y:auto;height:100%}
-.welcome h1{font-family:'Libre Baskerville',serif;font-weight:400;font-size:42px;margin:0 0 12px;color:var(--cream);letter-spacing:-.015em;line-height:1.1}
+.welcome{padding:34px 42px;overflow-y:auto;height:100%}
+.welcome h1{font-family:'Libre Baskerville',serif;font-weight:400;font-size:38px;margin:0 0 8px;color:var(--cream);letter-spacing:-.015em;line-height:1.1}
 .welcome h1 .glyph{color:var(--brass);font-family:'IBM Plex Mono',monospace}
-.welcome .sub{color:var(--dim);font-size:13px;font-family:'IBM Plex Mono',monospace;letter-spacing:.05em;margin-bottom:28px}
-.welcome p{max-width:680px;color:var(--cream);font-size:16px;line-height:1.7;margin:0 0 14px}
+.welcome .sub{color:var(--dim);font-size:12px;font-family:'IBM Plex Mono',monospace;letter-spacing:.05em;margin-bottom:20px}
+.welcome h2{font-family:'Libre Baskerville',serif;font-weight:400;font-size:21px;color:var(--brass);margin:28px 0 10px;letter-spacing:-.01em}
+.welcome p{max-width:760px;color:var(--cream);font-size:15px;line-height:1.7;margin:0 0 12px}
 .welcome p b{color:var(--brass);font-weight:normal}
-.welcome .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin:32px 0;max-width:1000px}
-.welcome .card{padding:18px;background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:2px;cursor:pointer;transition:all .15s}
-.welcome .card:hover{border-color:var(--brass);background:rgba(184,151,74,.05)}
-.welcome .card h3{margin:0 0 6px;font-family:'Libre Baskerville',serif;font-size:16px;color:var(--cream)}
-.welcome .card .cat{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--brass);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
-.welcome .card .desc{font-size:13px;color:var(--cream);opacity:.85;line-height:1.5}
 
-/* Quick stats */
-.qstats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:900px;margin:24px 0}
-.qstat{padding:14px;background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:2px}
-.qstat .v{font-family:'IBM Plex Mono',monospace;font-size:22px;color:var(--cream)}
-.qstat .k{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--dim);text-transform:uppercase;letter-spacing:.15em;margin-top:4px}
+.qstats{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:14px 0 18px;max-width:980px}
+@media (max-width:1100px){.qstats{grid-template-columns:repeat(3,1fr)}}
+.qstat{padding:12px 14px;background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:2px}
+.qstat .v{font-family:'IBM Plex Mono',monospace;font-size:20px;color:var(--cream);line-height:1}
+.qstat .k{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--dim);text-transform:uppercase;letter-spacing:.12em;margin-top:5px}
 .qstat.green .v{color:var(--green)}
 .qstat.brass .v{color:var(--brass)}
+.qstat.ox .v{color:var(--ox)}
 
-/* Konomi modal */
-.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.86);z-index:200;display:none;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(4px)}
+/* Anatomy diagram */
+.anatomy{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0 24px;max-width:980px}
+@media (max-width:880px){.anatomy{grid-template-columns:1fr}}
+.layer{padding:11px 14px;background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:2px;display:flex;align-items:center;gap:10px}
+.layer .L{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--brass);text-transform:uppercase;letter-spacing:.15em;flex-shrink:0;width:32px}
+.layer .lbl{font-family:'Libre Baskerville',serif;font-size:14px;color:var(--cream);flex:1}
+.layer .organ{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--dim);text-align:right}
+
+/* Department dashboard */
+.dept-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:14px 0 24px;max-width:1200px}
+.dept{padding:16px;background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:2px;cursor:pointer;transition:all .12s}
+.dept:hover{border-color:var(--brass);background:rgba(184,151,74,.04)}
+.dept .head{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--brass);text-transform:uppercase;letter-spacing:.15em;margin-bottom:6px;display:flex;justify-content:space-between}
+.dept .nm{font-family:'Libre Baskerville',serif;font-size:18px;color:var(--cream);margin-bottom:8px}
+.dept .tools{font-size:12px;color:var(--cream);opacity:.85;line-height:1.55}
+.dept .tools span{display:inline-block;padding:2px 7px;margin:2px 4px 2px 0;border:1px solid var(--line);border-radius:1px;font-size:10px;font-family:'IBM Plex Mono',monospace;color:var(--brass)}
+
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:200;display:none;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(4px)}
 .modal-bg.open{display:flex}
-.modal{background:var(--void);border:1px solid var(--brass);max-width:540px;width:100%;padding:28px;border-radius:2px;box-shadow:0 20px 60px rgba(0,0,0,.6);position:relative}
+.modal{background:var(--void);border:1px solid var(--brass);max-width:560px;width:100%;padding:28px;border-radius:2px;box-shadow:0 20px 60px rgba(0,0,0,.6);position:relative}
 .modal h2{font-family:'Libre Baskerville',serif;font-weight:400;font-size:24px;color:var(--brass);margin:0 0 14px}
 .modal label{display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.12em;margin:14px 0 6px}
 .modal input,.modal textarea{width:100%;padding:11px 14px;background:rgba(0,0,0,.45);border:1px solid var(--line);color:var(--cream);font-family:inherit;font-size:14px;border-radius:2px;outline:none}
-.modal input:focus{border-color:var(--brass)}
+.modal input:focus,.modal textarea:focus{border-color:var(--brass)}
 .close{position:absolute;top:12px;right:16px;background:none;border:none;color:var(--dim);font-size:22px;cursor:pointer}
 .close:hover{color:var(--brass)}
 .mono{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--cream);word-break:break-all}
 
-/* Command palette (Ctrl+K) */
-.palette-bg{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:300;display:none;align-items:flex-start;justify-content:center;padding-top:120px;backdrop-filter:blur(6px)}
+.palette-bg{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:300;display:none;align-items:flex-start;justify-content:center;padding-top:100px;backdrop-filter:blur(6px)}
 .palette-bg.open{display:flex}
-.palette{background:var(--void);border:1px solid var(--brass);max-width:580px;width:100%;border-radius:2px;box-shadow:0 30px 80px rgba(0,0,0,.8);overflow:hidden}
-.palette input{width:100%;padding:18px 22px;background:transparent;border:none;color:var(--cream);font-size:16px;font-family:inherit;outline:none;border-bottom:1px solid var(--line)}
-.palette-results{max-height:380px;overflow-y:auto}
-.palette-result{padding:12px 22px;display:flex;align-items:center;gap:12px;cursor:pointer;font-size:14px;color:var(--cream);border-bottom:1px solid var(--line)}
+.palette{background:var(--void);border:1px solid var(--brass);max-width:640px;width:100%;border-radius:2px;box-shadow:0 30px 80px rgba(0,0,0,.8);overflow:hidden}
+.palette input{width:100%;padding:16px 22px;background:transparent;border:none;color:var(--cream);font-size:15px;font-family:inherit;outline:none;border-bottom:1px solid var(--line)}
+.palette-results{max-height:420px;overflow-y:auto}
+.palette-result{padding:11px 22px;display:flex;align-items:center;gap:12px;cursor:pointer;font-size:14px;color:var(--cream);border-bottom:1px solid var(--line)}
 .palette-result:hover,.palette-result.sel{background:rgba(184,151,74,.08);color:var(--brass)}
-.palette-result .icon{font-family:'IBM Plex Mono',monospace;font-size:16px;color:var(--brass)}
-.palette-result .cat{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.1em}
+.palette-result .glyph{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--brass)}
+.palette-result .cat{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
 
-/* Notice banner inside iframe area */
-.notice{padding:10px 18px;background:rgba(212,168,87,.08);border-bottom:1px solid var(--warm);font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--warm)}
+.notice{padding:9px 18px;background:rgba(212,168,87,.08);border-bottom:1px solid var(--warm);font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--warm)}
+
+.loading-state{padding:48px;text-align:center;color:var(--dim);font-family:'IBM Plex Mono',monospace}
 
 @media (max-width:760px){
-  :root{--sidebar-w:64px}
-  .nav-item span:not(.icon):not(.partial-dot){display:none}
-  .nav-section{display:none}
-  .brand .name,.brand .meta{display:none}
+  :root{--sidebar-w:200px}
+  .welcome{padding:24px}
 }
 </style>
 <script src="https://sjgant80-hub.github.io/fall-euaiact/cdn/audit-shim.js" data-tool="fallcorp" data-tier="full" defer></script>
@@ -119,71 +133,84 @@ body{background:radial-gradient(ellipse at top, rgba(139,26,26,.06), transparent
 <body>
 
 <div class="app">
-  <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="brand">
-      <div class="logo">◊·κ=φ⁴</div>
-      <div class="name" id="brand-name">FallCorp</div>
-      <div class="meta" id="brand-meta">your sovereign company</div>
+      <div class="logo">◊·κ=φ⁴ <span style="color:var(--cream);font-size:11px;letter-spacing:.1em">FALLCORP</span></div>
+      <div class="name" id="brand-name">your sovereign company</div>
+      <div class="meta">the company AIOS · <span id="organ-count">…</span> organs</div>
     </div>
-    <nav class="nav" id="nav"></nav>
+    <div class="sb-search">
+      <input type="search" id="sb-search" placeholder="search organs · Ctrl+K" />
+    </div>
+    <nav class="nav" id="nav">
+      <div class="loading-state">/loading registry…/</div>
+    </nav>
     <div class="sidebar-footer">
-      <a href="https://sjgant80-hub.github.io/fallstack/" target="_blank">◊ FallStack · audit your SaaS</a>
-      <a href="https://sjgant80-hub.github.io/fall-registry/" target="_blank">◊ Full registry · 140+ organs</a>
+      <a href="https://sjgant80-hub.github.io/fallstack/" target="_blank">◊ FallStack · audit SaaS</a>
+      <a href="https://sjgant80-hub.github.io/fall-registry/" target="_blank">◊ Registry · full index</a>
       <a href="https://github.com/sjgant80-hub/fallcorp" target="_blank">◊ Fork on GitHub</a>
     </div>
   </aside>
 
-  <!-- MAIN -->
   <div class="main">
     <div class="topbar">
       <div>
-        <div class="topbar-title" id="topbar-title">your company · the sovereign stack</div>
-        <div class="topbar-meta" id="topbar-meta">Ctrl+K to jump · click any organ in the sidebar</div>
+        <div class="topbar-title" id="topbar-title">your sovereign company</div>
+        <div class="topbar-meta" id="topbar-meta">9-layer AIOS · Ctrl+K to jump · click any organ</div>
       </div>
       <div class="topbar-actions">
-        <button class="btn" id="btn-identity">◊ Identity</button>
+        <button class="btn" id="btn-anatomy">Anatomy</button>
+        <button class="btn" id="btn-identity">Identity</button>
         <button class="btn" id="btn-brand">Brand</button>
-        <a class="btn" id="btn-open-new" href="#" target="_blank" style="display:none">Open in new tab ↗</a>
+        <a class="btn" id="btn-open-new" href="#" target="_blank" style="display:none">Open ↗</a>
+        <a class="btn" id="btn-source" href="#" target="_blank" style="display:none">Source ↗</a>
       </div>
     </div>
 
     <div class="content">
       <div class="frame-wrap" id="frame-wrap">
-        <!-- Welcome view -->
         <div class="welcome" id="welcome">
-          <h1><span class="glyph">◊</span> your sovereign company</h1>
-          <p class="sub">/17 organs · 1 tab · your data on your device · the SaaS bill goes to zero/</p>
-          <p>FallCorp bundles the entire sovereign SMB stack into one tab. Pick an organ from the sidebar to load it in-frame. Press <b>Ctrl+K</b> (Cmd+K on Mac) to jump to any organ by name.</p>
-          <p>Your <b>identity</b> is a single Konomi Ed25519 keypair · shared across every organ that loads here. Your <b>contacts</b> sync automatically between FallCRM, FallSlot, FallInvoice, and FallList. Your <b>brand</b> (name + colour) is one config that every organ reads.</p>
+          <h1><span class="glyph">◊</span> your sovereign company.</h1>
+          <p class="sub">/9-layer AIOS · every Fall organ surfaced · Konomi SSO · the SaaS bill goes to zero/</p>
+
+          <p>FallCorp is the corporate edition of <b>NiceAssOS</b> — the entire AI Native Solutions estate, surfaced as one workspace. Your <b>identity</b> is a Konomi Ed25519 keypair shared across every organ. Your <b>contacts</b> ripple between organs via the fall-signal bus. Your <b>brand</b> is one config every organ reads. Your <b>SaaS bill goes to zero</b>.</p>
 
           <div class="qstats">
-            <div class="qstat ox"><div class="v" id="qs-current">£36k</div><div class="k">typical annual SaaS · 5-person SMB</div></div>
-            <div class="qstat green"><div class="v">£0</div><div class="k">FallCorp annual cost · forever</div></div>
-            <div class="qstat brass"><div class="v" id="qs-organs">17</div><div class="k">sovereign organs bundled</div></div>
-            <div class="qstat"><div class="v" id="qs-contacts">0</div><div class="k">contacts in shared book</div></div>
+            <div class="qstat brass"><div class="v" id="qs-organs">…</div><div class="k">organs available · live from registry</div></div>
+            <div class="qstat ox"><div class="v">£36k</div><div class="k">typical 5-person SaaS · annual</div></div>
+            <div class="qstat green"><div class="v">£0</div><div class="k">FallCorp · forever</div></div>
+            <div class="qstat"><div class="v" id="qs-depts">9</div><div class="k">departments mapped</div></div>
+            <div class="qstat"><div class="v" id="qs-contacts">0</div><div class="k">contacts shared</div></div>
           </div>
 
-          <h3 style="font-family:'Libre Baskerville',serif;font-weight:400;font-size:22px;color:var(--brass);margin:32px 0 6px">Start where it bleeds the most</h3>
-          <p style="color:var(--dim);font-size:14px">These are the four wedges that usually save the most for a typical small company. Click to load.</p>
-          <div class="grid" id="start-cards"></div>
+          <h2>The 9-layer company anatomy</h2>
+          <div class="anatomy" id="anatomy"></div>
 
-          <h3 style="font-family:'Libre Baskerville',serif;font-weight:400;font-size:22px;color:var(--brass);margin:32px 0 6px">The full stack</h3>
-          <div class="grid" id="all-cards"></div>
+          <h2>Your departments</h2>
+          <p style="color:var(--dim);font-size:13px;margin:0 0 10px">Click a department to see its organs · or pick directly from the sidebar.</p>
+          <div class="dept-grid" id="dept-grid"></div>
         </div>
-        <!-- iframe loaded when organ picked -->
       </div>
     </div>
   </div>
 </div>
 
-<!-- KONOMI IDENTITY MODAL -->
+<div class="modal-bg" id="anatomy-modal">
+  <div class="modal" style="max-width:740px">
+    <button class="close" data-close="anatomy-modal">×</button>
+    <h2>◊ the 9-layer company AIOS</h2>
+    <p style="color:var(--dim);font-size:13px;font-family:'IBM Plex Mono',monospace">Architecture lineage: Thomas Frumkin · MianoCube · NiceAssOS substrate. FallCorp is the SMB-flavoured surface of the same architecture that powers the personal AIOS — same body, organisational instead of individual.</p>
+    <div class="anatomy" id="anatomy-modal-body" style="margin-top:14px"></div>
+    <p style="font-size:12px;color:var(--dim);font-family:'IBM Plex Mono',monospace;margin-top:14px">The arrangement is the intelligence. The nodes are just math.</p>
+  </div>
+</div>
+
 <div class="modal-bg" id="id-modal">
   <div class="modal">
-    <button class="close" id="id-close">×</button>
-    <h2>◊ your Konomi identity</h2>
-    <p style="color:var(--dim);font-size:13px;font-family:'IBM Plex Mono',monospace">Ed25519 keypair · generated on this device · the private key never leaves it · the public key is your identity across every organ that loads in this shell.</p>
-    <label>public key (your fork address)</label>
+    <button class="close" data-close="id-modal">×</button>
+    <h2>◊ company identity · Konomi</h2>
+    <p style="color:var(--dim);font-size:13px;font-family:'IBM Plex Mono',monospace">Ed25519 keypair generated on this device · the private key is non-extractable · the public key is your company's address across every organ that loads here.</p>
+    <label>public key (your company address)</label>
     <div class="mono" id="id-pub" style="background:rgba(0,0,0,.4);padding:10px;border:1px solid var(--line);border-radius:2px">…</div>
     <label>source</label>
     <div class="mono" id="id-source">…</div>
@@ -194,26 +221,26 @@ body{background:radial-gradient(ellipse at top, rgba(139,26,26,.06), transparent
   </div>
 </div>
 
-<!-- BRAND MODAL -->
 <div class="modal-bg" id="brand-modal">
   <div class="modal">
-    <button class="close" id="brand-close">×</button>
+    <button class="close" data-close="brand-modal">×</button>
     <h2>◊ company brand</h2>
-    <p style="color:var(--dim);font-size:13px;font-family:'IBM Plex Mono',monospace">Sets your company name + accent colour across the shell. Saved locally · nothing leaves your browser.</p>
+    <p style="color:var(--dim);font-size:13px;font-family:'IBM Plex Mono',monospace">One config the shell + every organ reads. Saved locally · nothing leaves your browser.</p>
     <label>company name</label>
     <input type="text" id="brand-input" placeholder="Your Company Ltd" />
-    <label>tagline (optional)</label>
+    <label>tagline</label>
     <input type="text" id="tag-input" placeholder="your sovereign company" />
+    <label>handle (used for fork namespace)</label>
+    <input type="text" id="handle-input" placeholder="yourcompany" />
     <div style="display:flex;gap:8px;margin-top:18px">
       <button class="btn primary" id="brand-save">Save</button>
     </div>
   </div>
 </div>
 
-<!-- COMMAND PALETTE -->
 <div class="palette-bg" id="palette-bg">
   <div class="palette">
-    <input type="text" id="palette-input" placeholder="jump to an organ · type 'CRM', 'meetings', 'invoice'…" />
+    <input type="text" id="palette-input" placeholder="jump to an organ · type 'CRM', 'meetings', 'invoice', 'audit'…" />
     <div class="palette-results" id="palette-results"></div>
   </div>
 </div>
@@ -222,52 +249,73 @@ body{background:radial-gradient(ellipse at top, rgba(139,26,26,.06), transparent
 'use strict';
 
 // =====================================================================
-// FallCorp · prime 1327 · the bundled sovereign SMB stack shell
+// FallCorp v0.2 · prime 1327 · the sovereign company AIOS
 // =====================================================================
 
-// ── ORGANS · the full bundled stack ─────────────────────────────────
-const ORGANS = [
-  // Sales & contacts
-  { id:'fallcrm',      icon:'◆', name:'FallCRM',        cat:'Sales · CRM',          url:'https://sjgant80-hub.github.io/fallcrm/',        desc:'Sovereign HubSpot wedge · pipeline · contacts · deals' },
-  { id:'fallslot',     icon:'◐', name:'FallSlot',       cat:'Sales · Scheduling',   url:'https://sjgant80-hub.github.io/fallslot/',       desc:'Sovereign Calendly wedge · booking pages · availability' },
-  { id:'fallform',     icon:'▤', name:'FallForm',       cat:'Sales · Forms',        url:'https://sjgant80-hub.github.io/fallform/',       desc:'Sovereign Typeform wedge · multi-step forms · capture' },
-  { id:'falllist',     icon:'◇', name:'FallList',       cat:'Marketing · Email',    url:'https://sjgant80-hub.github.io/falllist/',       desc:'Sovereign Mailchimp wedge · lists · campaigns · drips' },
-  { id:'fallpost',     icon:'❖', name:'FallPost',       cat:'Marketing · LinkedIn', url:'https://sjgant80-hub.github.io/fallpost/',       desc:'Sovereign Buffer wedge · LinkedIn drops · queue · post' },
-  { id:'fallcarousel', icon:'▦', name:'FallCarousel',   cat:'Marketing · Carousel', url:'https://sjgant80-hub.github.io/fallcarousel/',   desc:'Sovereign Canva carousel wedge · 9-pane LinkedIn builder' },
-  { id:'fallguild',    icon:'◍', name:'FallGuild',      cat:'Marketing · Pods',     url:'https://sjgant80-hub.github.io/fallguild/',      desc:'LinkedIn engagement-pod coordinator · sovereign' },
-  { id:'audiofabric',  icon:'≋', name:'AudioFabric',    cat:'Marketing · Audio',    url:'https://sjgant80-hub.github.io/audiofabric/',    desc:'Audio content engine · podcasts · voice notes · clips' },
-  // Finance
-  { id:'fallinvoice',  icon:'◈', name:'FallInvoice',    cat:'Finance · Invoicing',  url:'https://sjgant80-hub.github.io/fallinvoice/',    desc:'Sovereign Stripe Billing wedge · invoices · pay-links · reminders' },
-  { id:'fallap',       icon:'◊', name:'FallAP',         cat:'Finance · AP',         url:'https://sjgant80-hub.github.io/fallap/',         desc:'Bill-payment rewriter · convenience hierarchy · sovereign' },
-  { id:'fallflow',     icon:'◑', name:'FallFlow',       cat:'Finance · Cashflow',   url:'https://sjgant80-hub.github.io/fallflow/',       desc:'14-day cash runway warning · earliest-trouble detector' },
-  // Operations
-  { id:'fallscribe',   icon:'◧', name:'FallScribe',     cat:'Ops · Meeting notes',  url:'https://sjgant80-hub.github.io/fallscribe/',     desc:'Sovereign Granola wedge · MediaRecorder + Web Speech + WebLLM' },
-  { id:'fallhire',     icon:'◓', name:'FallHire',       cat:'HR · Interviews',      url:'https://sjgant80-hub.github.io/fallhire/',       desc:'Interview scorecards · pipeline · sovereign ATS lite' },
-  // Compliance + Legal
-  { id:'fall-euaiact', icon:'◉', name:'fall-euaiact',   cat:'Compliance · EU AI Act', url:'https://sjgant80-hub.github.io/fall-euaiact/', desc:'EU AI Act compliance SDK · Article 12 audit chain · MIT' },
-  { id:'groundlevel',  icon:'◭', name:'GroundLevel',    cat:'Legal · UK research',  url:'https://sjgant80-hub.github.io/groundlevel/',    desc:'UK legal research · 50+ letter templates · case-DB' },
-  // Personal / strategic
-  { id:'operator',     icon:'◬', name:'OPERATOR',       cat:'Strategy · Consulting', url:'https://sjgant80-hub.github.io/operator/',     desc:'McKinsey-style consulting cascade · agents + decks' },
-  { id:'botler',       icon:'◌', name:'Botler',         cat:'Personal AI · Notes',  url:'https://sjgant80-hub.github.io/botler/',         desc:'On-device personal AI · WebLLM Llama-3.2-3B' },
-  // Subscription / rights
-  { id:'fallback',     icon:'◰', name:'FallBack',       cat:'Rights · Subs',        url:'https://sjgant80-hub.github.io/fallback/',       desc:'Sovereign rights & refund engine · cancel · refund · claim' },
-  { id:'fallstack',    icon:'◢', name:'FallStack',      cat:'Stack · Audit',        url:'https://sjgant80-hub.github.io/fallstack/',      desc:'Audit your SaaS bill · map to sovereign replacements' },
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll(s));
+
+// ── REGISTRY · loaded live ─────────────────────────────────────────
+const REGISTRY_URL = 'https://raw.githubusercontent.com/sjgant80-hub/fall-registry/main/index.json';
+
+const REGISTRY_CATS = ['apps','apis','sdks','research','infra','plugins'];
+let REGISTRY = null;
+let ORGANS = []; // flat normalised list
+
+// ── 9-LAYER ANATOMY · the AIOS layout for SMB ──────────────────────
+const ANATOMY = [
+  { L:'L9', lbl:'window manager · the shell',  organ:'FallCorp (you are here)' },
+  { L:'L8', lbl:'shell · onboarding · tutor',  organ:'ExitEngine · GroundLevel' },
+  { L:'L7', lbl:'identity · provenance',       organ:'Konomi Ed25519' },
+  { L:'L6', lbl:'network · federation',        organ:'fall-signal · niceassos-mesh' },
+  { L:'L5', lbl:'memory · the company cube',   organ:'FallMind v2 · talk-compact' },
+  { L:'L4', lbl:'process scheduler · routing', organ:'FallCompass · LLM cascade' },
+  { L:'L3', lbl:'organs · the body',           organ:'140+ Fall* tools' },
+  { L:'L2', lbl:'bootloader · adaptive seed',  organ:'FallStack · audit your bill' },
+  { L:'L1', lbl:'kernel · loop runner',        organ:'si-didy · the operator' },
 ];
 
-// Start-where-it-bleeds quick picks
-const START_PICKS = ['fallscribe','fallback','fallstack','fallcrm'];
+// ── DEPARTMENT TAXONOMY · maps an org chart to organs ──────────────
+const DEPARTMENTS = [
+  { id:'sales',      glyph:'◆', name:'Sales',                 match:[/crm|pipeline|deal|prospect|outreach|reach|slot|booking|schedul/i],
+                     hint:['fallcrm','fallreach','fallslot','fallform','fallforce'] },
+  { id:'marketing',  glyph:'◇', name:'Marketing & Brand',     match:[/email|list|mailchimp|campaign|post|carousel|linkedin|audio|content|brand|reach|seo|guild/i],
+                     hint:['falllist','fallpost','fallcarousel','fallguild','audiofabric'] },
+  { id:'finance',    glyph:'◈', name:'Finance & Accounting',  match:[/invoice|billing|payment|ap|ar|cashflow|accounts|stripe|payroll|expense|finan/i],
+                     hint:['fallinvoice','fallap','fallflow','fallaccount','fallpay'] },
+  { id:'ops',        glyph:'◧', name:'Operations',            match:[/ops|scribe|meeting|notes|task|project|workflow|gymops|apex|procurement|kit/i],
+                     hint:['fallscribe','gymops','fallforce','fallmap','fallfind'] },
+  { id:'hr',         glyph:'◓', name:'People & HR',           match:[/hire|recruit|interview|hr|people|payroll|onboard|culture|learn|train|teach/i],
+                     hint:['fallhire','falllearn','exitengine','fallvault'] },
+  { id:'legal',      glyph:'◭', name:'Legal & Compliance',    match:[/legal|law|euaiact|compliance|audit|vetter|kqtt|policy|gdpr|privacy|euaia|shield|euaia/i],
+                     hint:['groundlevel','fall-euaiact','fall-vetter','fallshield'] },
+  { id:'strategy',   glyph:'◬', name:'Strategy & Research',   match:[/operator|substrate|verify|raas|research|strategy|consult|deep|forge|fab|oracle|cassie/i],
+                     hint:['operator','fall-substrate','fall-verify','fall-raas','forge-lab'] },
+  { id:'it',         glyph:'◉', name:'IT & Infrastructure',   match:[/core|api|mcp|cube|cdn|factory|palette|hot|registry|gateway|mesh|net|onion|infra/i],
+                     hint:['fallcore','fallcore-factory','fallcore-mcp','fall-palette','fall-hot','fall-registry','fallnet'] },
+  { id:'owner',      glyph:'◊', name:'Owner / Personal',      match:[/botler|shadow|copy.gate|exit|personal|jung|compass|copy|recom|fab/i],
+                     hint:['botler','shadowcompass','copy-gate','exitengine','fallback','fallstack','fallcorp'] },
+];
+
+// ── KNOWN EXTRA ORGANS not always in registry yet ──────────────────
+const EXTRAS = [
+  { name:'FallCorp',    url:'https://sjgant80-hub.github.io/fallcorp/',    source:'https://github.com/sjgant80-hub/fallcorp',    kind:'app', category:'meta', purpose:'The company AIOS · 9-layer SMB shell · this tool', tier:'A', status:'live', prime:1327 },
+  { name:'FallStack',   url:'https://sjgant80-hub.github.io/fallstack/',   source:'https://github.com/sjgant80-hub/fallstack',   kind:'app', category:'audit', purpose:'SaaS audit + sovereign migration engine', tier:'A', status:'live', prime:1321 },
+  { name:'FallScribe',  url:'https://sjgant80-hub.github.io/fallscribe/',  source:'https://github.com/sjgant80-hub/fallscribe',  kind:'app', category:'ops', purpose:'Sovereign meeting notes · Granola wedge', tier:'A', status:'live', prime:1319 },
+  { name:'FallBack',    url:'https://sjgant80-hub.github.io/fallback/',    source:'https://github.com/sjgant80-hub/fallback',    kind:'app', category:'rights', purpose:'Rights & refund engine · cancel/refund/claim', tier:'A', status:'live', prime:1307 },
+];
 
 // =====================================================================
 // STATE + INDEXEDDB
 // =====================================================================
-const DB_NAME = 'fallcorp-v1';
+const DB_NAME = 'fallcorp-v2';
 const DB_VER = 1;
 function openDB() {
   return new Promise((res, rej) => {
     const r = indexedDB.open(DB_NAME, DB_VER);
     r.onupgradeneeded = (e) => {
       const db = e.target.result;
-      ['config','keys','contacts','signal'].forEach(s => {
+      ['config','keys','contacts','registry'].forEach(s => {
         if (!db.objectStoreNames.contains(s)) db.createObjectStore(s);
       });
     };
@@ -275,29 +323,102 @@ function openDB() {
     r.onerror = () => rej(r.error);
   });
 }
-async function dbPut(s, k, v) {
-  const db = await openDB();
-  return new Promise((res, rej) => {
-    const tx = db.transaction(s,'readwrite');
-    tx.objectStore(s).put(v, k);
-    tx.oncomplete = () => res();
-    tx.onerror = () => rej(tx.error);
-  });
-}
-async function dbGet(s, k) {
-  const db = await openDB();
-  return new Promise((res, rej) => {
-    const tx = db.transaction(s,'readonly');
-    const r = tx.objectStore(s).get(k);
-    r.onsuccess = () => res(r.result);
-    r.onerror = () => rej(r.error);
-  });
-}
+async function dbPut(s,k,v){const db=await openDB();return new Promise((r,j)=>{const tx=db.transaction(s,'readwrite');tx.objectStore(s).put(v,k);tx.oncomplete=()=>r();tx.onerror=()=>j(tx.error);});}
+async function dbGet(s,k){const db=await openDB();return new Promise((r,j)=>{const tx=db.transaction(s,'readonly');const q=tx.objectStore(s).get(k);q.onsuccess=()=>r(q.result);q.onerror=()=>j(q.error);});}
 
-const state = { konomi:{ pub:null, priv:null, source:'none' }, brand:{ name:'FallCorp', tag:'your sovereign company' }, contacts:0, currentOrgan:null };
+const state = {
+  konomi: { pub:null, priv:null, source:'none' },
+  brand: { name:'FallCorp', tag:'your sovereign company', handle:null },
+  currentOrgan: null,
+  navFilter: '',
+  contacts: 0,
+  collapsed: new Set(),
+};
 
 // =====================================================================
-// KONOMI ED25519
+// REGISTRY LOAD + NORMALISATION
+// =====================================================================
+async function loadRegistry() {
+  // try cache first for fast paint
+  const cached = await dbGet('registry','snapshot');
+  if (cached) {
+    REGISTRY = cached.data;
+    buildOrgans();
+    renderEverything();
+  }
+  // refresh in background
+  try {
+    const r = await fetch(REGISTRY_URL, { cache: 'no-cache' });
+    if (r.ok) {
+      const j = await r.json();
+      REGISTRY = j;
+      await dbPut('registry','snapshot', { data: j, ts: Date.now() });
+      buildOrgans();
+      renderEverything();
+    } else if (!cached) {
+      $('#nav').innerHTML = '<div class="loading-state">✗ could not load registry</div>';
+    }
+  } catch (e) {
+    if (!cached) $('#nav').innerHTML = '<div class="loading-state">✗ registry offline · check connection</div>';
+  }
+}
+
+function buildOrgans() {
+  if (!REGISTRY) { ORGANS = []; return; }
+  const seen = new Set();
+  const out = [];
+  for (const cat of REGISTRY_CATS) {
+    if (!Array.isArray(REGISTRY[cat])) continue;
+    for (const e of REGISTRY[cat]) {
+      if (!e || !e.name) continue;
+      const key = (e.name + '|' + (e.url||'')).toLowerCase();
+      if (seen.has(key)) continue;
+      seen.add(key);
+      out.push({ ...e, _section: cat });
+    }
+  }
+  // append EXTRAS (today's builds + meta organs) if not already present
+  for (const e of EXTRAS) {
+    const key = (e.name + '|' + (e.url||'')).toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push({ ...e, _section: 'apps' });
+  }
+  // assign each organ to a department (by hint or by match)
+  for (const o of out) {
+    o._dept = pickDept(o);
+  }
+  // sort: tier A first, then by prime asc, then by name
+  out.sort((a,b) => {
+    const ta = (a.tier === 'A' ? 0 : a.tier === 'B' ? 1 : 2);
+    const tb = (b.tier === 'A' ? 0 : b.tier === 'B' ? 1 : 2);
+    if (ta !== tb) return ta - tb;
+    return (a.prime||9999) - (b.prime||9999) || (a.name||'').localeCompare(b.name||'');
+  });
+  ORGANS = out;
+  $('#organ-count').textContent = ORGANS.length;
+  $('#qs-organs').textContent = ORGANS.length;
+  $('#qs-depts').textContent = DEPARTMENTS.length;
+}
+
+function pickDept(o) {
+  const id = (o.name || '').toLowerCase().replace(/[^a-z0-9-]/g, '');
+  // hint match first
+  for (const d of DEPARTMENTS) {
+    if (d.hint.includes(id)) return d.id;
+  }
+  // regex match
+  const hay = `${o.name||''} ${o.purpose||''} ${o.category||''} ${o.domain||''}`.toLowerCase();
+  for (const d of DEPARTMENTS) {
+    for (const re of d.match) {
+      if (re.test(hay)) return d.id;
+    }
+  }
+  return 'owner'; // default bucket
+}
+
+// =====================================================================
+// KONOMI
 // =====================================================================
 async function mintKonomi() {
   try {
@@ -305,156 +426,190 @@ async function mintKonomi() {
     const raw = await crypto.subtle.exportKey('raw', pair.publicKey);
     const pubHex = Array.from(new Uint8Array(raw)).map(b=>b.toString(16).padStart(2,'0')).join('');
     state.konomi = { pub: pubHex, priv: pair.privateKey, source:'web-crypto-ed25519' };
-    await dbPut('keys','konomi', state.konomi);
   } catch (e) {
-    const buf = new Uint8Array(32);
-    crypto.getRandomValues(buf);
-    const pubHex = Array.from(buf).map(b=>b.toString(16).padStart(2,'0')).join('');
-    state.konomi = { pub: pubHex, priv: null, source:'fallback-random' };
-    await dbPut('keys','konomi', state.konomi);
+    const buf = new Uint8Array(32); crypto.getRandomValues(buf);
+    state.konomi = { pub: Array.from(buf).map(b=>b.toString(16).padStart(2,'0')).join(''), priv: null, source:'fallback-random' };
   }
+  await dbPut('keys','konomi', state.konomi);
 }
 
 // =====================================================================
 // RENDER
 // =====================================================================
-const $ = (s) => document.querySelector(s);
-const $$ = (s) => Array.from(document.querySelectorAll(s));
+function renderEverything() {
+  renderSidebar();
+  renderAnatomy();
+  renderDepts();
+}
 
 function renderSidebar() {
   const nav = $('#nav');
   nav.innerHTML = '';
 
-  // Group organs by category
-  const cats = {};
-  for (const o of ORGANS) {
-    const k = o.cat.split(' · ')[0];
-    if (!cats[k]) cats[k] = [];
-    cats[k].push(o);
-  }
+  // Dashboard shortcut
+  const home = document.createElement('a');
+  home.className = 'nav-item' + (state.currentOrgan ? '' : ' active');
+  home.dataset.id = '_home';
+  home.href = '#';
+  home.innerHTML = '<span class="glyph">◊</span><span class="nm">Dashboard</span>';
+  home.addEventListener('click', (e) => { e.preventDefault(); showWelcome(); });
+  nav.appendChild(home);
 
-  for (const [cat, items] of Object.entries(cats)) {
+  // Group organs by department · respect filter
+  const q = state.navFilter.toLowerCase();
+  for (const d of DEPARTMENTS) {
+    const items = ORGANS.filter(o => o._dept === d.id && matchesFilter(o, q));
+    if (!items.length) continue;
     const h = document.createElement('div');
-    h.className = 'nav-section';
-    h.textContent = cat;
+    h.className = 'nav-section' + (state.collapsed.has(d.id) ? ' collapsed' : '');
+    h.dataset.dept = d.id;
+    h.innerHTML = `<span>${d.glyph} ${d.name}</span><span><span class="count">${items.length}</span> <span class="caret">▼</span></span>`;
+    h.addEventListener('click', () => {
+      if (state.collapsed.has(d.id)) state.collapsed.delete(d.id);
+      else state.collapsed.add(d.id);
+      renderSidebar();
+    });
     nav.appendChild(h);
+    const wrap = document.createElement('div');
+    wrap.className = 'nav-items';
     for (const o of items) {
       const a = document.createElement('a');
-      a.className = 'nav-item';
-      a.dataset.id = o.id;
-      a.href = '#' + o.id;
-      a.innerHTML = `<span class="icon">${o.icon}</span><span>${o.name}</span>`;
-      a.addEventListener('click', (e) => { e.preventDefault(); loadOrgan(o.id); });
-      nav.appendChild(a);
+      a.className = 'nav-item' + (state.currentOrgan?.name === o.name ? ' active' : '');
+      a.dataset.id = o.name;
+      a.href = '#' + slug(o.name);
+      a.innerHTML = `<span class="glyph">${tierGlyph(o)}</span><span class="nm">${escapeHtml(o.name)}</span>${o.tier && o.tier !== 'A' ? `<span class="tier">${o.tier}</span>` : ''}`;
+      a.addEventListener('click', (e) => { e.preventDefault(); loadOrgan(o); });
+      wrap.appendChild(a);
+    }
+    nav.appendChild(wrap);
+  }
+}
+
+function matchesFilter(o, q) {
+  if (!q) return true;
+  const hay = `${o.name||''} ${o.purpose||''} ${o.category||''} ${o.domain||''} ${o.kind||''}`.toLowerCase();
+  return q.split(/\s+/).every(tok => hay.includes(tok));
+}
+
+function tierGlyph(o) {
+  if (o.status === 'private') return '◐';
+  if (o.tier === 'A') return '◆';
+  if (o.tier === 'B') return '◇';
+  return '◌';
+}
+
+function slug(s) { return (s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
+function escapeHtml(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+function renderAnatomy() {
+  for (const target of ['#anatomy','#anatomy-modal-body']) {
+    const el = $(target);
+    if (!el) continue;
+    el.innerHTML = '';
+    for (const a of ANATOMY) {
+      const d = document.createElement('div');
+      d.className = 'layer';
+      d.innerHTML = `<span class="L">${a.L}</span><span class="lbl">${a.lbl}</span><span class="organ">${a.organ}</span>`;
+      el.appendChild(d);
     }
   }
-
-  // Dashboard / welcome shortcut at the top
-  const home = document.createElement('a');
-  home.className = 'nav-item';
-  home.dataset.id = 'home';
-  home.href = '#';
-  home.innerHTML = `<span class="icon">◊</span><span>Dashboard</span>`;
-  home.addEventListener('click', (e) => { e.preventDefault(); showWelcome(); });
-  nav.insertBefore(home, nav.firstChild);
 }
 
-function renderCards() {
-  const sc = $('#start-cards');
-  sc.innerHTML = '';
-  for (const id of START_PICKS) {
-    const o = ORGANS.find(x => x.id === id);
-    if (!o) continue;
-    sc.appendChild(makeCard(o));
-  }
-  const ac = $('#all-cards');
-  ac.innerHTML = '';
-  for (const o of ORGANS) {
-    if (START_PICKS.includes(o.id)) continue;
-    ac.appendChild(makeCard(o));
+function renderDepts() {
+  const wrap = $('#dept-grid');
+  wrap.innerHTML = '';
+  for (const d of DEPARTMENTS) {
+    const items = ORGANS.filter(o => o._dept === d.id);
+    if (!items.length) continue;
+    const card = document.createElement('div');
+    card.className = 'dept';
+    const top = items.slice(0, 6);
+    card.innerHTML = `
+      <div class="head"><span>${d.glyph} ${d.name}</span><span>${items.length} organs</span></div>
+      <div class="nm">${escapeHtml(d.name)}</div>
+      <div class="tools">${top.map(o => `<span>${escapeHtml(o.name)}</span>`).join('')}${items.length > 6 ? ` <span style="color:var(--dim)">+${items.length-6} more</span>` : ''}</div>
+    `;
+    card.onclick = () => {
+      // expand that section in sidebar and scroll to it
+      state.collapsed.delete(d.id);
+      renderSidebar();
+      const sec = $$(`.nav-section[data-dept="${d.id}"]`)[0];
+      if (sec) sec.scrollIntoView({ behavior:'smooth', block:'center' });
+    };
+    wrap.appendChild(card);
   }
 }
-function makeCard(o) {
-  const c = document.createElement('div');
-  c.className = 'card';
-  c.onclick = () => loadOrgan(o.id);
-  c.innerHTML = `<div class="cat">${o.icon} ${o.cat}</div><h3>${o.name}</h3><div class="desc">${o.desc}</div>`;
-  return c;
-}
+
+// =====================================================================
+// LOAD ORGAN
+// =====================================================================
+let welcomeNode = null;
 
 function showWelcome() {
   state.currentOrgan = null;
   const fw = $('#frame-wrap');
   fw.innerHTML = '';
-  // re-insert welcome
-  fw.appendChild(welcomeNode);
-  $$('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.id === 'home'));
-  $('#topbar-title').textContent = state.brand.name + ' · the sovereign stack';
-  $('#topbar-meta').textContent = 'Ctrl+K to jump · click any organ in the sidebar';
+  if (welcomeNode) fw.appendChild(welcomeNode);
+  $('#topbar-title').textContent = state.brand.name + ' · the sovereign company';
+  $('#topbar-meta').textContent = '9-layer AIOS · Ctrl+K to jump · click any organ';
   $('#btn-open-new').style.display = 'none';
-  history.replaceState(null, '', '#');
+  $('#btn-source').style.display = 'none';
+  history.replaceState(null,'','#');
+  renderSidebar();
 }
 
-let welcomeNode = null;
-
-function loadOrgan(id) {
-  const o = ORGANS.find(x => x.id === id);
-  if (!o) return;
+function loadOrgan(o) {
   state.currentOrgan = o;
-  $$('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.id === id));
-  $('#topbar-title').textContent = `${o.icon} ${o.name} · ${o.cat}`;
-  $('#topbar-meta').textContent = o.desc;
+  $('#topbar-title').textContent = `${tierGlyph(o)} ${o.name}`;
+  $('#topbar-meta').textContent = (o.purpose || o.category || '').slice(0, 96);
   const btn = $('#btn-open-new');
-  btn.style.display = 'inline-flex';
-  btn.href = o.url;
+  btn.style.display = 'inline-flex'; btn.href = o.url || '#';
+  const src = $('#btn-source');
+  if (o.source) { src.style.display = 'inline-flex'; src.href = o.source; } else { src.style.display = 'none'; }
 
   const fw = $('#frame-wrap');
   fw.innerHTML = '';
-  // notice banner
   const notice = document.createElement('div');
   notice.className = 'notice';
-  notice.innerHTML = `◊ loading <b>${o.name}</b> in-frame · some organs may also need to open in a new tab depending on cross-origin policies · use the "Open in new tab" button if iframe doesn't render.`;
+  notice.innerHTML = `◊ loading <b>${escapeHtml(o.name)}</b> in-frame · some pages block iframe embedding · use "Open ↗" if the panel below stays blank · all organs work standalone.`;
   fw.appendChild(notice);
-  const f = document.createElement('iframe');
-  f.src = o.url;
-  f.title = o.name;
-  f.allow = 'clipboard-read; clipboard-write; microphone; camera; storage-access';
-  f.referrerPolicy = 'no-referrer';
-  fw.appendChild(f);
-  history.replaceState(null, '', '#' + id);
+  if (o.url) {
+    const f = document.createElement('iframe');
+    f.src = o.url; f.title = o.name;
+    f.allow = 'clipboard-read; clipboard-write; microphone; camera; storage-access; autoplay';
+    f.referrerPolicy = 'no-referrer';
+    fw.appendChild(f);
+  } else {
+    const nourl = document.createElement('div');
+    nourl.className = 'loading-state';
+    nourl.innerHTML = `<p>${escapeHtml(o.name)} has no live URL listed in the registry yet.</p><p style="color:var(--brass)"><a href="${o.source || '#'}" target="_blank">view source ↗</a></p>`;
+    fw.appendChild(nourl);
+  }
+  history.replaceState(null,'','#' + slug(o.name));
+  renderSidebar();
 
-  // NAS hand-off
-  if (window.nas && window.nas.isForkPresent && window.nas.isForkPresent()) {
-    try { window.nas.broadcast('tool_visited', { tool: o.id, via: 'fallcorp' }); } catch(_) {}
+  if (window.nas?.isForkPresent?.()) {
+    try { window.nas.broadcast('tool_visited', { tool: o.name, via:'fallcorp' }); } catch(_) {}
   }
 }
 
 // =====================================================================
 // COMMAND PALETTE
 // =====================================================================
-const pState = { sel: 0, results: [] };
-function openPalette() {
-  $('#palette-bg').classList.add('open');
-  $('#palette-input').value = '';
-  $('#palette-input').focus();
-  refreshPalette();
-}
-function closePalette() { $('#palette-bg').classList.remove('open'); }
-function refreshPalette() {
+const pState = { sel:0, results:[] };
+function openPalette(){ $('#palette-bg').classList.add('open'); $('#palette-input').value=''; $('#palette-input').focus(); refreshPalette(); }
+function closePalette(){ $('#palette-bg').classList.remove('open'); }
+function refreshPalette(){
   const q = $('#palette-input').value.toLowerCase().trim();
-  const items = ORGANS.filter(o => {
-    if (!q) return true;
-    return [o.name, o.cat, o.desc, o.id].join(' ').toLowerCase().includes(q);
-  }).slice(0, 8);
-  pState.results = items;
-  pState.sel = 0;
-  const r = $('#palette-results');
-  r.innerHTML = '';
-  items.forEach((o, i) => {
+  const items = ORGANS.filter(o => matchesFilter(o, q)).slice(0, 12);
+  pState.results = items; pState.sel = 0;
+  const r = $('#palette-results'); r.innerHTML='';
+  items.forEach((o,i)=>{
     const d = document.createElement('div');
-    d.className = 'palette-result' + (i === 0 ? ' sel' : '');
-    d.innerHTML = `<span class="icon">${o.icon}</span><span>${o.name}</span><span class="cat">${o.cat}</span>`;
-    d.onclick = () => { loadOrgan(o.id); closePalette(); };
+    d.className = 'palette-result' + (i===0?' sel':'');
+    const dept = DEPARTMENTS.find(x => x.id === o._dept);
+    d.innerHTML = `<span class="glyph">${tierGlyph(o)}</span><span>${escapeHtml(o.name)}</span><span class="cat">${dept ? dept.name : (o.category||'')}</span>`;
+    d.onclick = () => { loadOrgan(o); closePalette(); };
     r.appendChild(d);
   });
 }
@@ -462,38 +617,29 @@ function refreshPalette() {
 // =====================================================================
 // MODALS
 // =====================================================================
-function openId() {
-  $('#id-pub').textContent = state.konomi.pub || '(no key yet)';
-  $('#id-source').textContent = state.konomi.source;
-  $('#id-modal').classList.add('open');
-}
-function openBrand() {
-  $('#brand-input').value = state.brand.name || '';
-  $('#tag-input').value = state.brand.tag || '';
-  $('#brand-modal').classList.add('open');
-}
+function openModal(id) { $('#' + id).classList.add('open'); }
+function closeModal(id) { $('#' + id).classList.remove('open'); }
 
 async function saveBrand() {
   state.brand.name = $('#brand-input').value.trim() || 'FallCorp';
   state.brand.tag = $('#tag-input').value.trim() || 'your sovereign company';
-  await dbPut('config', 'brand', state.brand);
+  state.brand.handle = $('#handle-input').value.trim().toLowerCase().replace(/[^a-z0-9]/g,'') || null;
+  await dbPut('config','brand', state.brand);
   $('#brand-name').textContent = state.brand.name;
-  $('#brand-meta').textContent = state.brand.tag;
   if (!state.currentOrgan) showWelcome();
-  $('#brand-modal').classList.remove('open');
+  closeModal('brand-modal');
 }
 
 // =====================================================================
-// FALL-SIGNAL BUS (contact sync across organs that listen)
+// CROSS-ORGAN BUS
 // =====================================================================
 let signalCh = null;
 try { signalCh = new BroadcastChannel('fall-signal'); } catch(_) {}
 if (signalCh) {
-  signalCh.onmessage = async (e) => {
+  signalCh.onmessage = (e) => {
     const m = e.data;
     if (!m || !m.kind) return;
-    if (m.kind === 'contact:upserted' || m.kind === 'crm:contact') {
-      // bump the local contact counter
+    if (m.kind.startsWith('contact:') || m.kind === 'crm:contact') {
       state.contacts = (state.contacts || 0) + 1;
       $('#qs-contacts').textContent = state.contacts;
     }
@@ -505,54 +651,64 @@ if (signalCh) {
 // =====================================================================
 window.addEventListener('DOMContentLoaded', async () => {
   const cfg = await dbGet('config','brand');
-  if (cfg) state.brand = cfg;
+  if (cfg) state.brand = { ...state.brand, ...cfg };
   $('#brand-name').textContent = state.brand.name;
-  $('#brand-meta').textContent = state.brand.tag;
 
   const kk = await dbGet('keys','konomi');
   if (kk) state.konomi = kk; else await mintKonomi();
 
-  // Capture welcome node before any organ load (so we can re-mount)
   welcomeNode = $('#welcome');
 
-  renderSidebar();
-  renderCards();
-
-  $('#btn-identity').onclick = openId;
-  $('#btn-brand').onclick = openBrand;
-  $('#id-close').onclick = () => $('#id-modal').classList.remove('open');
-  $('#brand-close').onclick = () => $('#brand-modal').classList.remove('open');
-  $('#id-mint').onclick = async () => { await mintKonomi(); openId(); };
-  $('#id-copy').onclick = async () => {
-    try { await navigator.clipboard.writeText(state.konomi.pub); } catch (_) {}
+  $('#btn-anatomy').onclick = () => openModal('anatomy-modal');
+  $('#btn-identity').onclick = () => {
+    $('#id-pub').textContent = state.konomi.pub || '(no key)';
+    $('#id-source').textContent = state.konomi.source;
+    openModal('id-modal');
   };
+  $('#btn-brand').onclick = () => {
+    $('#brand-input').value = state.brand.name || '';
+    $('#tag-input').value = state.brand.tag || '';
+    $('#handle-input').value = state.brand.handle || '';
+    openModal('brand-modal');
+  };
+  $$('[data-close]').forEach(b => b.onclick = () => closeModal(b.dataset.close));
+  $('#id-mint').onclick = async () => { await mintKonomi(); $('#id-pub').textContent = state.konomi.pub; $('#id-source').textContent = state.konomi.source; };
+  $('#id-copy').onclick = async () => { try { await navigator.clipboard.writeText(state.konomi.pub); } catch(_) {} };
   $('#brand-save').onclick = saveBrand;
 
-  // Palette wiring
+  // sidebar search
+  $('#sb-search').addEventListener('input', (e) => {
+    state.navFilter = e.target.value;
+    renderSidebar();
+  });
+
+  // palette
   document.addEventListener('keydown', (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); openPalette(); return; }
     if (e.key === 'Escape') { closePalette(); $$('.modal-bg').forEach(m => m.classList.remove('open')); }
     if ($('#palette-bg').classList.contains('open')) {
       if (e.key === 'ArrowDown') { e.preventDefault(); pState.sel = Math.min(pState.sel+1, pState.results.length-1); updateSel(); }
       else if (e.key === 'ArrowUp') { e.preventDefault(); pState.sel = Math.max(pState.sel-1, 0); updateSel(); }
-      else if (e.key === 'Enter' && pState.results[pState.sel]) { loadOrgan(pState.results[pState.sel].id); closePalette(); }
+      else if (e.key === 'Enter' && pState.results[pState.sel]) { loadOrgan(pState.results[pState.sel]); closePalette(); }
     }
   });
-  function updateSel() {
-    $$('#palette-results .palette-result').forEach((el, i) => el.classList.toggle('sel', i === pState.sel));
-  }
+  function updateSel(){ $$('#palette-results .palette-result').forEach((el,i)=>el.classList.toggle('sel', i===pState.sel)); }
   $('#palette-input').addEventListener('input', refreshPalette);
   $('#palette-bg').addEventListener('click', (e) => { if (e.target.id === 'palette-bg') closePalette(); });
 
-  // Load from URL hash on boot
+  // load registry, then handle hash deeplink
+  await loadRegistry();
   const h = location.hash.replace(/^#/, '');
-  if (h && ORGANS.find(o => o.id === h)) loadOrgan(h);
-  else showWelcome();
+  if (h) {
+    const found = ORGANS.find(o => slug(o.name) === h);
+    if (found) loadOrgan(found);
+  }
+  if (!state.currentOrgan) showWelcome();
 
-  console.log('%c◊·κ=φ⁴ FallCorp · prime 1327 · your sovereign company · 17 organs · 1 tab', 'color:#b8974a;font-weight:bold');
+  console.log('%c◊·κ=φ⁴ FallCorp v0.2 · prime 1327 · the sovereign company AIOS · ' + ORGANS.length + ' organs', 'color:#b8974a;font-weight:bold');
 });
 
-window.FallCorp = { state, ORGANS, loadOrgan };
+window.FallCorp = { state, ORGANS, DEPARTMENTS, ANATOMY, loadOrgan, mintKonomi };
 </script>
 
 </body>
