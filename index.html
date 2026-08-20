@@ -1,816 +1,222 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="aios-organ" content="fallcorp" />
-<meta name="aios-layer" content="L9.window-manager.smb" />
-<meta name="prime" content="1327" />
-<meta name="description" content="◊ FallCorp · the sovereign company AIOS · every Fall organ in one shell · department mapping · Konomi SSO · MIT" />
-<title>◊ FallCorp · the sovereign company AIOS</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext x='2' y='26' font-size='28' fill='%23b8974a'%3E%E2%97%8A%3C/text%3E%3C/svg%3E" />
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>fallcorp · the konomified company</title>
 <style>
-:root{
-  --ox:#8b1a1a; --brass:#b8974a; --cream:#c4bfb2; --void:#0b0a0f;
-  --green:#3a7d3a; --dim:#7c7466; --line:rgba(184,151,74,.2);
-  --warm:#d4a857;
-  --sidebar-w:260px;
-}
-*,*::before,*::after{box-sizing:border-box}
-html,body{margin:0;padding:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--void);color:var(--cream);height:100vh;line-height:1.5;overflow:hidden}
-body{background:radial-gradient(ellipse at top, rgba(139,26,26,.06), transparent 55%),radial-gradient(ellipse at bottom, rgba(184,151,74,.04), transparent 55%),var(--void)}
+body{font-family:Georgia,serif;background:#0b0a0f;color:#d8d2c4;max-width:900px;margin:0 auto;padding:28px 18px;line-height:1.55}
+h1{font-size:1.7rem;color:#d4a017;margin-bottom:4px}
+h2{font-size:1.12rem;color:#d4a017;margin:0 0 6px;border-bottom:1px solid #3a3630;padding-bottom:4px}
+h2 .dn{font-size:.75em;opacity:.6;font-weight:normal;float:right}
+a{color:#d4a017}.quiet{opacity:.7;font-size:.93em}
+.hero{border:1px solid #d4a017;border-radius:10px;padding:18px 22px;margin:1.3rem 0;background:rgba(212,160,23,.06);font-size:1.06em}
+.laws{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin:1.2rem 0}
+.lawbox{border:1px solid #3a3630;border-radius:8px;padding:11px 14px;background:#141218;font-size:.92em}
+.lawbox b{color:#d4a017}
+.dept{margin:1.6rem 0}
+.tools{font-size:.9em;margin:4px 0 10px;opacity:.85}
+.seats{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.seat{border:1px solid #3a3630;border-radius:8px;padding:11px 13px;background:#141218;font-size:.92em}
+.seat.human{border-color:#d4a017;background:rgba(212,160,23,.07)}
+.seat .n{opacity:.6}.seat .law{display:block;color:#d4a017;font-size:.86em;margin-top:2px}
+.seat .why{opacity:.75;font-size:.88em;margin-top:5px}
+.seat .needs{font-size:.8em;margin-top:6px;color:#9fb89f}
+.ws{float:right;font-size:.7em;letter-spacing:.08em;border:1px solid #3a3630;border-radius:4px;padding:1px 6px;opacity:.7}
+.ws.up{color:#9fb89f;border-color:#9fb89f;opacity:1}
+.gap{border-left:2px solid rgba(212,160,23,.5);padding:7px 12px;margin-top:10px;font-size:.86em;opacity:.8}
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.9em}
+td,th{border-bottom:1px solid #2a2722;padding:7px 9px;text-align:left}
+th{color:#d4a017;font-size:.8em;letter-spacing:.08em;text-transform:uppercase}
+.num{white-space:nowrap;font-variant-numeric:tabular-nums;text-align:right}
+.honest{border:1px solid #3a3630;border-radius:8px;padding:13px 17px;margin:1.4rem 0;font-size:.9em;background:#141218}
+footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid #3a3630;font-size:.8em;opacity:.65}
+</style></head><body>
+<h1>The konomified company</h1>
+<p class="quiet">a 100-person UK claims firm, rebuilt AI-first on the sovereign estate — the AI Native Solutions offer, walkable</p>
 
-.app{display:flex;height:100vh}
-.sidebar{width:var(--sidebar-w);background:rgba(0,0,0,.5);border-right:1px solid var(--line);display:flex;flex-direction:column;flex-shrink:0;overflow:hidden}
-.main{flex:1;display:flex;flex-direction:column;min-width:0}
+<div class="hero"><b>100 seats · 90 agents · 10 humans at the doors · all four laws held.</b><br>
+The stack this firm rents today: <b>£148,020/yr</b> in SaaS and per-seat AI —
+derived line by line below, never asserted. The sovereign build replaces the rented ninety
+with owned tools and local models; the humans keep exactly the seats that must be human.</div>
 
-.brand{padding:16px 16px 14px;border-bottom:1px solid var(--line)}
-.brand .logo{font-family:'IBM Plex Mono',monospace;font-size:15px;color:var(--brass);letter-spacing:.05em}
-.brand .name{font-family:'Libre Baskerville',serif;font-size:15px;color:var(--cream);margin-top:4px}
-.brand .meta{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.1em;margin-top:4px}
-
-.sb-search{padding:10px 12px;border-bottom:1px solid var(--line)}
-.sb-search input{width:100%;padding:8px 12px;background:rgba(0,0,0,.4);border:1px solid var(--line);color:var(--cream);font-family:inherit;font-size:13px;border-radius:2px;outline:none}
-.sb-search input:focus{border-color:var(--brass)}
-
-.nav{padding:6px 0;flex:1;overflow-y:auto}
-.nav-section{padding:14px 16px 4px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--brass);text-transform:uppercase;letter-spacing:.2em;display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none}
-.nav-section .count{color:var(--dim);font-size:10px}
-.nav-section .caret{color:var(--dim);transition:transform .15s}
-.nav-section.collapsed .caret{transform:rotate(-90deg)}
-.nav-section.collapsed + .nav-items{display:none}
-.nav-items{}
-.nav-item{display:flex;align-items:center;gap:9px;padding:7px 16px 7px 22px;font-size:12px;color:var(--cream);cursor:pointer;border-left:2px solid transparent;transition:all .12s;text-decoration:none}
-.nav-item:hover{background:rgba(184,151,74,.05);border-left-color:var(--brass)}
-.nav-item.active{background:rgba(184,151,74,.1);border-left-color:var(--brass);color:var(--brass)}
-.nav-item .glyph{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--brass);width:14px;flex-shrink:0}
-.nav-item .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.nav-item .tier{font-size:9px;color:var(--dim);font-family:'IBM Plex Mono',monospace;padding:1px 4px;border:1px solid var(--line);border-radius:1px}
-
-.sidebar-footer{padding:10px 16px;border-top:1px solid var(--line);font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--dim)}
-.sidebar-footer a{color:var(--brass);text-decoration:none;display:block;padding:3px 0}
-
-.topbar{padding:11px 22px;border-bottom:1px solid var(--line);background:rgba(0,0,0,.4);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;flex-shrink:0}
-.topbar-title{font-family:'Libre Baskerville',serif;font-size:17px;color:var(--cream)}
-.topbar-meta{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
-.topbar-actions{display:flex;gap:8px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:6px;padding:6px 13px;background:transparent;border:1px solid var(--brass);color:var(--brass);font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.1em;cursor:pointer;border-radius:2px;transition:all .12s;text-decoration:none}
-.btn:hover{background:var(--brass);color:var(--void)}
-.btn.primary{background:var(--brass);color:var(--void)}
-.btn.primary:hover{background:var(--cream);border-color:var(--cream)}
-
-.content{flex:1;display:flex;overflow:hidden;position:relative;background:var(--void)}
-.frame-wrap{flex:1;position:relative}
-.frame-wrap iframe{width:100%;height:100%;border:none;background:#fff}
-
-.welcome{padding:34px 42px;overflow-y:auto;height:100%}
-.welcome h1{font-family:'Libre Baskerville',serif;font-weight:400;font-size:38px;margin:0 0 8px;color:var(--cream);letter-spacing:-.015em;line-height:1.1}
-.welcome h1 .glyph{color:var(--brass);font-family:'IBM Plex Mono',monospace}
-.welcome .sub{color:var(--dim);font-size:12px;font-family:'IBM Plex Mono',monospace;letter-spacing:.05em;margin-bottom:20px}
-.welcome h2{font-family:'Libre Baskerville',serif;font-weight:400;font-size:21px;color:var(--brass);margin:28px 0 10px;letter-spacing:-.01em}
-.welcome p{max-width:760px;color:var(--cream);font-size:15px;line-height:1.7;margin:0 0 12px}
-.welcome p b{color:var(--brass);font-weight:normal}
-
-.qstats{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:14px 0 18px;max-width:980px}
-@media (max-width:1100px){.qstats{grid-template-columns:repeat(3,1fr)}}
-.qstat{padding:12px 14px;background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:2px}
-.qstat .v{font-family:'IBM Plex Mono',monospace;font-size:20px;color:var(--cream);line-height:1}
-.qstat .k{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--dim);text-transform:uppercase;letter-spacing:.12em;margin-top:5px}
-.qstat.green .v{color:var(--green)}
-.qstat.brass .v{color:var(--brass)}
-.qstat.ox .v{color:var(--ox)}
-
-/* Anatomy diagram */
-.anatomy{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0 24px;max-width:980px}
-@media (max-width:880px){.anatomy{grid-template-columns:1fr}}
-.layer{padding:11px 14px;background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:2px;display:flex;align-items:center;gap:10px}
-.layer .L{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--brass);text-transform:uppercase;letter-spacing:.15em;flex-shrink:0;width:32px}
-.layer .lbl{font-family:'Libre Baskerville',serif;font-size:14px;color:var(--cream);flex:1}
-.layer .organ{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--dim);text-align:right}
-
-/* Department dashboard */
-.dept-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:14px 0 24px;max-width:1200px}
-.dept{padding:16px;background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:2px;cursor:pointer;transition:all .12s}
-.dept:hover{border-color:var(--brass);background:rgba(184,151,74,.04)}
-.dept .head{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--brass);text-transform:uppercase;letter-spacing:.15em;margin-bottom:6px;display:flex;justify-content:space-between}
-.dept .nm{font-family:'Libre Baskerville',serif;font-size:18px;color:var(--cream);margin-bottom:8px}
-.dept .tools{font-size:12px;color:var(--cream);opacity:.85;line-height:1.55}
-.dept .tools span{display:inline-block;padding:2px 7px;margin:2px 4px 2px 0;border:1px solid var(--line);border-radius:1px;font-size:10px;font-family:'IBM Plex Mono',monospace;color:var(--brass)}
-
-.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:200;display:none;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(4px)}
-.modal-bg.open{display:flex}
-.modal{background:var(--void);border:1px solid var(--brass);max-width:560px;width:100%;padding:28px;border-radius:2px;box-shadow:0 20px 60px rgba(0,0,0,.6);position:relative}
-.modal h2{font-family:'Libre Baskerville',serif;font-weight:400;font-size:24px;color:var(--brass);margin:0 0 14px}
-.modal label{display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.12em;margin:14px 0 6px}
-.modal input,.modal textarea{width:100%;padding:11px 14px;background:rgba(0,0,0,.45);border:1px solid var(--line);color:var(--cream);font-family:inherit;font-size:14px;border-radius:2px;outline:none}
-.modal input:focus,.modal textarea:focus{border-color:var(--brass)}
-.close{position:absolute;top:12px;right:16px;background:none;border:none;color:var(--dim);font-size:22px;cursor:pointer}
-.close:hover{color:var(--brass)}
-.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--cream);word-break:break-all}
-
-.palette-bg{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:300;display:none;align-items:flex-start;justify-content:center;padding-top:100px;backdrop-filter:blur(6px)}
-.palette-bg.open{display:flex}
-.palette{background:var(--void);border:1px solid var(--brass);max-width:640px;width:100%;border-radius:2px;box-shadow:0 30px 80px rgba(0,0,0,.8);overflow:hidden}
-.palette input{width:100%;padding:16px 22px;background:transparent;border:none;color:var(--cream);font-size:15px;font-family:inherit;outline:none;border-bottom:1px solid var(--line)}
-.palette-results{max-height:420px;overflow-y:auto}
-.palette-result{padding:11px 22px;display:flex;align-items:center;gap:12px;cursor:pointer;font-size:14px;color:var(--cream);border-bottom:1px solid var(--line)}
-.palette-result:hover,.palette-result.sel{background:rgba(184,151,74,.08);color:var(--brass)}
-.palette-result .glyph{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--brass)}
-.palette-result .cat{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
-
-.notice{padding:9px 18px;background:rgba(212,168,87,.08);border-bottom:1px solid var(--warm);font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--warm)}
-
-.loading-state{padding:48px;text-align:center;color:var(--dim);font-family:'IBM Plex Mono',monospace}
-
-@media (max-width:760px){
-  :root{--sidebar-w:200px}
-  .welcome{padding:24px}
-}
-</style>
-<script src="https://sjgant80-hub.github.io/fall-euaiact/cdn/audit-shim.js" data-tool="fallcorp" data-tier="full" defer></script>
-<script src="https://sjgant80-hub.github.io/fall-euaiact/cdn/nas-shim.js" data-tool="fallcorp" data-organ="L9.window-manager.smb"></script>
-<script src="https://sjgant80-hub.github.io/fall-euaiact/cdn/fall-forge.js" defer></script>
-</head>
-<body>
-
-<div class="app">
-  <aside class="sidebar">
-    <div class="brand">
-      <div class="logo">◊·κ=φ⁴ <span style="color:var(--cream);font-size:11px;letter-spacing:.1em">FALLCORP</span></div>
-      <div class="name" id="brand-name">your sovereign company</div>
-      <div class="meta">the company AIOS · <span id="organ-count">…</span> organs</div>
-    </div>
-    <div class="sb-search">
-      <input type="search" id="sb-search" placeholder="search organs · Ctrl+K" />
-    </div>
-    <nav class="nav" id="nav">
-      <div class="loading-state">/loading registry…/</div>
-    </nav>
-    <div class="sidebar-footer">
-      <a href="https://sjgant80-hub.github.io/fallstack/" target="_blank">◊ FallStack · audit SaaS</a>
-      <a href="https://sjgant80-hub.github.io/fall-registry/" target="_blank">◊ Registry · full index</a>
-      <a href="https://github.com/sjgant80-hub/fallcorp" target="_blank">◊ Fork on GitHub</a>
-    </div>
-  </aside>
-
-  <div class="main">
-    <div class="topbar">
-      <div>
-        <div class="topbar-title" id="topbar-title">your sovereign company</div>
-        <div class="topbar-meta" id="topbar-meta">9-layer AIOS · Ctrl+K to jump · click any organ</div>
-      </div>
-      <div class="topbar-actions">
-        <button class="btn" id="btn-anatomy">Anatomy</button>
-        <button class="btn" id="btn-forge" title="Need an organ that doesn't exist? Forge one.">◊ Forge</button>
-        <button class="btn" id="btn-identity">Identity</button>
-        <button class="btn" id="btn-brand">Brand</button>
-        <a class="btn" id="btn-open-new" href="#" target="_blank" style="display:none">Open ↗</a>
-        <a class="btn" id="btn-source" href="#" target="_blank" style="display:none">Source ↗</a>
-      </div>
-    </div>
-
-    <div class="content">
-      <div class="frame-wrap" id="frame-wrap">
-        <div class="welcome" id="welcome">
-          <h1><span class="glyph">◊</span> your sovereign company.</h1>
-          <p class="sub">/9-layer AIOS · every Fall organ surfaced · Konomi SSO · the SaaS bill goes to zero/</p>
-
-          <p>FallCorp is the corporate edition of <b>NiceAssOS</b> — the entire AI Native Solutions estate, surfaced as one workspace. Your <b>identity</b> is a Konomi Ed25519 keypair shared across every organ. Your <b>contacts</b> ripple between organs via the fall-signal bus. Your <b>brand</b> is one config every organ reads. Your <b>SaaS bill goes to zero</b>.</p>
-
-          <div class="qstats">
-            <div class="qstat brass"><div class="v" id="qs-organs">…</div><div class="k">organs available · live from registry</div></div>
-            <div class="qstat ox"><div class="v">£36k</div><div class="k">typical 5-person SaaS · annual</div></div>
-            <div class="qstat green"><div class="v">£0</div><div class="k">FallCorp · forever</div></div>
-            <div class="qstat"><div class="v" id="qs-depts">9</div><div class="k">departments mapped</div></div>
-            <div class="qstat"><div class="v" id="qs-contacts">0</div><div class="k">contacts shared</div></div>
-          </div>
-
-          <h2>Start here</h2>
-          <p style="color:var(--dim);font-size:13px;margin:0 0 10px">Three organs that bootstrap the rest. Open them first.</p>
-          <div class="dept-grid" id="pin-grid" style="margin-bottom:20px"></div>
-
-          <h2>The 9-layer company anatomy</h2>
-          <div class="anatomy" id="anatomy"></div>
-
-          <h2>Your departments</h2>
-          <p style="color:var(--dim);font-size:13px;margin:0 0 10px">Click a department to see its organs · or pick directly from the sidebar.</p>
-          <div class="dept-grid" id="dept-grid"></div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="laws">
+<div class="lawbox"><b>💷 the money door</b><br>a seat is human if and only if it holds movement of real money. Enforced by the gated org law, not by an org chart drawing.</div>
+<div class="lawbox"><b>⚖ the legal door</b><br>a seat is human if and only if it holds a legal signature. Enforced by the gated org law, not by an org chart drawing.</div>
+<div class="lawbox"><b>◈ the taste door</b><br>a seat is human if and only if it holds taste and judgment calls. Enforced by the gated org law, not by an org chart drawing.</div>
+<div class="lawbox"><b>🤝 the client-trust door</b><br>a seat is human if and only if it holds the client-trust moments — the closes, the hard conversations. Enforced by the gated org law, not by an org chart drawing.</div>
 </div>
 
-<div class="modal-bg" id="anatomy-modal">
-  <div class="modal" style="max-width:740px">
-    <button class="close" data-close="anatomy-modal">×</button>
-    <h2>◊ the 9-layer company AIOS</h2>
-    <p style="color:var(--dim);font-size:13px;font-family:'IBM Plex Mono',monospace">Architecture lineage: Thomas Frumkin · MianoCube · NiceAssOS substrate. FallCorp is the SMB-flavoured surface of the same architecture that powers the personal AIOS — same body, organisational instead of individual.</p>
-    <div class="anatomy" id="anatomy-modal-body" style="margin-top:14px"></div>
-    <p style="font-size:12px;color:var(--dim);font-family:'IBM Plex Mono',monospace;margin-top:14px">The arrangement is the intelligence. The nodes are just math.</p>
-  </div>
-</div>
+<section class="dept">
+  <h2>intake <span class="dn">18 agents</span></h2>
+  <div class="tools">runs on: <a href="https://sjgant80-hub.github.io/fallclaimonboard/" target="_blank" rel="noopener">fallclaimonboard</a> · <a href="https://sjgant80-hub.github.io/fallform/" target="_blank" rel="noopener">fallform</a> · <a href="https://sjgant80-hub.github.io/fallslot/" target="_blank" rel="noopener">fallslot</a></div>
+  <div class="seats"><div class="seat"><b>FNOL intake handler</b> <span class="n">× 14</span>
+    <span class="ws ">DECLARED</span>
+    <div class="why">Answers every inbound channel (phone transcript, webform, email, WhatsApp) all day: captures first notification of loss, structures it into a case record, triages severity and vertical, and books the follow-up. Never closes, never promises outcomes.</div>
+    <div class="needs">the wire: CRM write access, telephony/transcription feed, webform and mailbox hooks, triage rubric, published service-scope list so it refuses out-of-scope claims loudly</div></div>
+<div class="seat"><b>Eligibility and fraud pre-screen agent</b> <span class="n">× 4</span>
+    <span class="ws ">DECLARED</span>
+    <div class="why">Runs every new case through eligibility rules, limitation-date checks, duplicate-claim detection, and fraud-signal screens; flags anything ambiguous to a human queue rather than silently rejecting.</div>
+    <div class="needs">the wire: Read access to case records, limitation/eligibility rule tables, CIFAS/fraud-signal data feed, a refusal log the compliance monitors can audit</div></div></div>
+  <div class="gap"><b>the honest gap:</b> No telephony/call-scripting layer and no lead-source analytics beyond what the CRM records. Bigger structural point: onboarding data is device-local IndexedDB — a 100-person intake team on separate machines has no shared queue; there is no multi-user sync anywhere in this suite.</div>
+</section>
+<section class="dept">
+  <h2>case handling <span class="dn">33 agents · 2 humans</span></h2>
+  <div class="tools">runs on: <a href="https://sjgant80-hub.github.io/fallclaim/" target="_blank" rel="noopener">fallclaim</a> · <a href="https://sjgant80-hub.github.io/redress-engine/" target="_blank" rel="noopener">redress-engine</a></div>
+  <div class="seats"><div class="seat"><b>Case handler agent</b> <span class="n">× 24</span>
+    <span class="ws ">DECLARED</span>
+    <div class="why">Owns a caseload end to end: chases evidence, updates clients on schedule, computes quantum with a gated calculator kernel, drafts next-step recommendations, and keeps every case file complete. All settlement offers and hard conversations are queued to humans, never spoken by the agent.</div>
+    <div class="needs">the wire: CRM full case access, gated quantum-calculation kernel, client-comms templates, diary/SLA engine, escalation queue wiring to the human seats</div></div>
+<div class="seat"><b>Evidence gatherer agent</b> <span class="n">× 5</span>
+    <span class="ws ">DECLARED</span>
+    <div class="why">All day it requests, chases and files third-party evidence: medical records, engineer reports, bank statements, insurer correspondence. Tracks what is outstanding per case and nags until it lands.</div>
+    <div class="needs">the wire: Outbound email/letter rail, document store write access, per-case evidence checklists, DSAR-request templates, consent records proving authority to request</div></div>
+<div class="seat"><b>Negotiation-prep agent</b> <span class="n">× 4</span>
+    <span class="ws ">DECLARED</span>
+    <div class="why">Builds the settlement position: comparable outcomes, quantum ranges, counterparty history, and a fully drafted offer or counter-offer. The prep rides whole to the human signer — the agent prepares, it never commits.</div>
+    <div class="needs">the wire: Historic outcomes dataset, case file read access, offer templates, the unsigned-door queue where prepared settlements wait for human sign-off</div></div>
+<div class="seat human"><b>Settlement sign-off counsel</b> <span class="n">× 1</span>
+      <span class="law">⚖ holds the legal door</span>
+      <div class="why">LEGAL SIGNATURE: settlement acceptances, letters before action, and litigation steps bind the client legally; the doctrine says sign-legal is a key-gated door only a human turns. Also judgment on which fights to pick.</div></div>
+<div class="seat human"><b>Escalation and vulnerable-client handler</b> <span class="n">× 1</span>
+      <span class="law">🤝 holds the client-trust door</span>
+      <div class="why">CLIENT-TRUST MOMENTS: bereavement, distress, vulnerability flags, and complaints that have gone hot are the hard conversations — a human voice or the trust dies. Also the judgment call on goodwill gestures.</div></div></div>
+  <div class="gap"><b>the honest gap:</b> Single-file and per-device: no shared caseload, no handler workload allocation, no supervision/file-review workflow, no court-deadline diary shared across fee earners. fallclaim is explicitly a research aid, not a system of record for 100 concurrent handlers.</div>
+</section>
+<section class="dept">
+  <h2>document production <span class="dn">11 agents</span></h2>
+  <div class="tools">runs on: <a href="https://sjgant80-hub.github.io/fallclaimpaper/" target="_blank" rel="noopener">fallclaimpaper</a> · <a href="https://sjgant80-hub.github.io/fallsignature/" target="_blank" rel="noopener">fallsignature</a></div>
+  <div class="seats"><div class="seat"><b>Letter and bundle drafter agent</b> <span class="n">× 8</span>
+    <span class="ws ">DECLARED</span>
+    <div class="why">Produces every outbound document: LBAs, claim packs, court bundles, DSAR responses, client updates — from gated templates, correctly paginated and indexed. Anything requiring signature lands in the unsigned queue, not the post.</div>
+    <div class="needs">the wire: Template library (jurisdiction-correct, versioned), case data read access, document store, the signature queue, a ui-gate style lint that blocks malformed bundles</div></div>
+<div class="seat"><b>Ingest, OCR and redaction agent</b> <span class="n">× 3</span>
+    <span class="ws ">DECLARED</span>
+    <div class="why">Turns every inbound PDF, photo and scan into searchable, classified, correctly-filed case documents; redacts third-party personal data before anything is shared onward.</div>
+    <div class="needs">the wire: OCR pipeline, document classifier, redaction rules signed off by compliance, write access to the document store, quarantine bucket for unreadable files</div></div></div>
+  <div class="gap"><b>the honest gap:</b> fallsignature is cryptographic content signing, not a client-facing e-signature ceremony (DocuSign-style counterparty flow with identity capture) — a claims firm getting CFAs signed remotely still needs that. No document-management repository: versioning, precedent library, or matter-linked filing. falljustice's lba.mjs response periods are ungated — the letter-before-action deadline arithmetic never goes near the working-day rule.</div>
+</section>
+<section class="dept">
+  <h2>finance and escrow <span class="dn">5 agents · 2 humans</span></h2>
+  
+  <div class="seats"><div class="seat"><b>Ledger and reconciliation agent</b> <span class="n">× 3</span>
+    <span class="ws ">DECLARED</span>
+    <div class="why">Keeps the books all day: posts transactions, reconciles the client-money account daily against bank feeds, computes fee deductions per the disclosed schedule, and raises invoices. It can count money; it can never move it.</div>
+    <div class="needs">the wire: Read-only bank feeds, accounting system write access, the disclosed fee schedule as data, CASS reconciliation rules, daily-break alerting to the client money officer</div></div>
+<div class="seat"><b>Payment-run preparation agent</b> <span class="n">× 2</span>
+    <span class="ws ">DECLARED</span>
+    <div class="why">Assembles every payment run — client settlements out of escrow, supplier invoices, refunds — fully verified against the ledger, then queues it unsigned. The scoreboard has no field for money by construction; the run waits for the key.</div>
+    <div class="needs">the wire: Ledger read access, payee verification data, the unsigned payment-door queue, zero payment-execution credentials by construction</div></div>
+<div class="seat human"><b>Finance director (payment key-holder)</b> <span class="n">× 1</span>
+      <span class="law">💷 holds the money door</span>
+      <div class="why">MONEY MOVEMENT: every outbound payment is a door only this seat's key turns. Reviews the agent-prepared run, verifies, signs, releases. The 10% is finance clicks — this is the archetypal one.</div></div>
+<div class="seat human"><b>Client money (escrow) officer</b> <span class="n">× 1</span>
+      <span class="law">💷 holds the money door</span>
+      <div class="why">MONEY MOVEMENT plus LEGAL SIGNATURE: releases settlement funds from the client account and personally attests the CASS-style client-money reconciliations regulators hold a named human to.</div></div></div>
+  
+</section>
+<section class="dept">
+  <h2>compliance and DSAR <span class="dn">6 agents · 1 human</span></h2>
+  <div class="tools">runs on: <a href="https://sjgant80-hub.github.io/falljustice/" target="_blank" rel="noopener">falljustice</a> · <a href="https://sjgant80-hub.github.io/fallclaimonboard/" target="_blank" rel="noopener">fallclaimonboard</a> · <a href="https://sjgant80-hub.github.io/fallclaimpractice/" target="_blank" rel="noopener">fallclaimpractice</a> · <a href="https://sjgant80-hub.github.io/falllist/" target="_blank" rel="noopener">falllist</a></div>
+  <div class="seats"><div class="seat"><b>DSAR fulfilment agent</b> <span class="n">× 3</span>
+    <span class="ws ">DECLARED</span>
+    <div class="why">Runs the DSAR engine all day: locates every record on a data subject, compiles, redacts third parties, and computes the statutory deadline in real working days rather than printing the rule. Responses queue for human release when judgment calls on exemptions arise.</div>
+    <div class="needs">the wire: Search access across all data stores, redaction pipeline, working-day deadline calculator (computed, never quoted), ICO guidance as versioned data, release queue</div></div>
+<div class="seat"><b>Compliance monitoring agent</b> <span class="n">× 3</span>
+    <span class="ws ">DECLARED</span>
+    <div class="why">Audits the other agents continuously: samples calls, letters, and case decisions against FCA CMCOB rules, fee-disclosure requirements, and financial-promotions rules; every breach candidate goes to the human head with evidence attached.</div>
+    <div class="needs">the wire: Read access to all comms and case logs, CMCOB rulebook as testable checks, sampling scheduler, breach-evidence store, no power to suppress its own findings</div></div>
+<div class="seat human"><b>Head of compliance (SMF holder)</b> <span class="n">× 1</span>
+      <span class="law">⚖ holds the legal door</span>
+      <div class="why">LEGAL SIGNATURE: FCA attestations, regulatory returns, breach notifications and DSAR exemption calls carry personal regulatory liability — a named human under the Senior Managers regime, not delegable to an agent.</div></div></div>
+  <div class="gap"><b>the honest gap:</b> Honest caveats: falljustice still ships without a bank-holiday list (the kernel accepts one, nothing supplies it, so every deadline carries the caveat). No AML/KYC identity-verification tooling. No FCA regulatory-returns filing (RMAR-style submissions) — fallclaimpractice tracks the numbers but nothing files them. No file-audit/supervision workflow for a compliance team.</div>
+</section>
+<section class="dept">
+  <h2>HR <span class="dn">2 agents · 1 human</span></h2>
+  <div class="tools">runs on: <a href="https://sjgant80-hub.github.io/fallhire/" target="_blank" rel="noopener">fallhire</a> · <a href="https://sjgant80-hub.github.io/fallrecruit/" target="_blank" rel="noopener">fallrecruit</a></div>
+  <div class="seats"><div class="seat"><b>HR operations agent</b> <span class="n">× 2</span>
+    <span class="ws ">DECLARED</span>
+    <div class="why">Runs people-admin all day: payroll preparation (queued unsigned to finance), onboarding paperwork, right-to-work checks, leave tracking, training-record upkeep for the ten humans and the agent fleet's access rosters.</div>
+    <div class="needs">the wire: HRIS access, payroll-prep templates feeding the unsigned payment queue, right-to-work check API, training-record store</div></div>
+<div class="seat human"><b>Head of people</b> <span class="n">× 1</span>
+      <span class="law">⚖ holds the legal door</span>
+      <div class="why">CLIENT-TRUST-CLASS HARD CONVERSATIONS turned inward, plus LEGAL SIGNATURE: hiring decisions, employment contracts, disciplinaries and dismissals are judgment calls with legal weight that a human owns face to face.</div></div></div>
+  <div class="gap"><b>the honest gap:</b> Recruitment is covered; HR proper is not. No HRIS: absence/holiday tracking, right-to-work records, performance reviews, training/CPD records, disciplinary process — none of it exists in the estate. fallgrade (portfolio assessment) is ungated and unexamined. For a 100-person firm this is the thinnest department.</div>
+</section>
+<section class="dept">
+  <h2>sales and marketing <span class="dn">7 agents · 3 humans</span></h2>
+  <div class="tools">runs on: <a href="https://sjgant80-hub.github.io/fallforce/" target="_blank" rel="noopener">fallforce</a> · <a href="https://sjgant80-hub.github.io/fallcrm/" target="_blank" rel="noopener">fallcrm</a> · <a href="https://sjgant80-hub.github.io/falllist/" target="_blank" rel="noopener">falllist</a> · <a href="https://sjgant80-hub.github.io/fallcrm-elite/" target="_blank" rel="noopener">fallcrm-elite</a></div>
+  <div class="seats"><div class="seat"><b>Lead-gen and content agent</b> <span class="n">× 4</span>
+    <span class="ws ">DECLARED</span>
+    <div class="why">Produces and posts content on the sanctioned rail (approved API automation, never puppeting a human login), runs the measure-adjust-post-better loop, drafts campaigns, and scores inbound leads. Posting is auto work by doctrine; taste sign-off is not.</div>
+    <div class="needs">the wire: Sanctioned posting rail with frozen rate limits, analytics read access, brand style rules as data, the taste editor's approval queue for anything novel, outbox for pre-rail drafts</div></div>
+<div class="seat"><b>Sales qualifier and nurture agent</b> <span class="n">× 3</span>
+    <span class="ws ">DECLARED</span>
+    <div class="why">Works the pipeline all day: qualifies inbound leads, answers factual product questions, books the close meetings into human closers' diaries, and keeps warm leads warm. It never states fees as final and never closes.</div>
+    <div class="needs">the wire: CRM pipeline access, closers' calendars, approved FAQ corpus, fee-disclosure scripts marked as compliance-locked text</div></div>
+<div class="seat human"><b>Client closer</b> <span class="n">× 2</span>
+      <span class="law">💷 holds the money door</span>
+      <div class="why">CLIENT-TRUST MOMENTS: the close — the conversation where a claimant decides to trust the firm with their case and their money — is named in the law itself. Deals and relationships stay human; the registry says so.</div></div>
+<div class="seat human"><b>Brand and taste editor</b> <span class="n">× 1</span>
+      <span class="law">◈ holds the taste door</span>
+      <div class="why">TASTE: the last inch of visual and verbal judgment — what the firm sounds like, which campaigns run, what never ships. Agents draft everything; this seat says yes, no, or not-like-that.</div></div></div>
+  <div class="gap"><b>the honest gap:</b> No claims-specific lead-buying/referral marketplace integration (how CMCs actually acquire volume). fallmail is P2P DID-addressed encrypted messaging, not SMTP — the firm's ordinary business email/mailbox is not covered by the estate at all; falllist covers only outbound broadcast via bring-your-own provider.</div>
+</section>
+<section class="dept">
+  <h2>IT and ops <span class="dn">7 agents</span></h2>
+  <div class="tools">runs on: <a href="https://sjgant80-hub.github.io/fallmail/" target="_blank" rel="noopener">fallmail</a> · <a href="https://sjgant80-hub.github.io/fallsignature/" target="_blank" rel="noopener">fallsignature</a> · <a href="https://github.com/sjgant80-hub/witness" target="_blank" rel="noopener">witness (trust rail)</a></div>
+  <div class="seats"><div class="seat"><b>Platform and SRE agent</b> <span class="n">× 3</span>
+    <span class="ws ">DECLARED</span>
+    <div class="why">Keeps the estate running: deploys, monitors, restarts, patches, capacity-plans; keeps the local models up so grunt work never silently spills to rented cloud. Loud stop, never silent failover.</div>
+    <div class="needs">the wire: Infra credentials scoped to non-production-data operations, monitoring stack, deploy pipelines, the health-gate endpoints, alert routing to humans for anything irreversible</div></div>
+<div class="seat"><b>Security and gate agent</b> <span class="n">× 2</span>
+    <span class="ws ">DECLARED</span>
+    <div class="why">Runs the trust rail on the firm's own code all day: mutation-gates every kernel, fuzzes the pure logic, sweeps for leaked secrets and orphaned access, and blocks any deploy whose gate is not clean. A green it cannot forge is the point.</div>
+    <div class="needs">the wire: CI access, the witness gate toolchain, secret-scanning across repos and stores, access-review feeds, authority to fail a build with a written reason</div></div>
+<div class="seat"><b>Data and reporting agent</b> <span class="n">× 2</span>
+    <span class="ws ">DECLARED</span>
+    <div class="why">Generates every metric surface from the one source of truth — case outcomes, SLA performance, regulatory MI, the morning brief — computed from the index, never hand-typed, so no number can drift from the data.</div>
+    <div class="needs">the wire: Read access to CRM, ledger and logs; report generators wired to source data; the morning-brief pipeline; zero write access to the systems it reports on</div></div></div>
+  <div class="gap"><b>the honest gap:</b> The honest structural gap for the whole firm sits here: every tool is a sovereign single-file, device-local PWA. There is no multi-user sync, no server, no shared database, no backup/restore story, no SSO/identity for 100 staff, no device management, no helpdesk/ticketing. That architecture is the estate's deliberate strength for a sole practitioner and its unsolved problem for a 100-person firm — two handlers on two machines cannot see the same case, and the sell-shelf's double-booking fault showed exactly what concurrent users do to page-local state.</div>
+</section>
+<section class="dept">
+  <h2>leadership <span class="dn">1 agent · 1 human</span></h2>
+  
+  <div class="seats"><div class="seat"><b>Orchestrator (chief-of-staff) agent</b> <span class="n">× 1</span>
+    <span class="ws ">DECLARED</span>
+    <div class="why">Runs the operating loop: maintains the one unsigned-door queue across all departments, ranks the managing director's first action each morning, tracks which preps are stale, and makes sure climbing the scoreboard never spams the key-holders.</div>
+    <div class="needs">the wire: Read access to every department's queue, the door-queue kernel, the brief generator, no keys of any kind by construction</div></div>
+<div class="seat human"><b>Managing director (master key-holder)</b> <span class="n">× 1</span>
+      <span class="law">💷 holds the money door</span>
+      <div class="why">ALL FOUR LAWS converge here: final money doors, ultimate legal signatures, the taste and judgment calls nobody else can make, and the client-trust moments at the top of the ladder. Holds the master key the agent fleet provably cannot hold or fake.</div></div></div>
+  
+</section>
 
-<div class="modal-bg" id="id-modal">
-  <div class="modal">
-    <button class="close" data-close="id-modal">×</button>
-    <h2>◊ company identity · Konomi</h2>
-    <p style="color:var(--dim);font-size:13px;font-family:'IBM Plex Mono',monospace">Ed25519 keypair generated on this device · the private key is non-extractable · the public key is your company's address across every organ that loads here.</p>
-    <label>public key (your company address)</label>
-    <div class="mono" id="id-pub" style="background:rgba(0,0,0,.4);padding:10px;border:1px solid var(--line);border-radius:2px">…</div>
-    <label>source</label>
-    <div class="mono" id="id-source">…</div>
-    <div style="display:flex;gap:8px;margin-top:18px">
-      <button class="btn primary" id="id-mint">Mint new keypair</button>
-      <button class="btn" id="id-copy">Copy pub key</button>
-    </div>
-  </div>
-</div>
+<h2>what the rented stack costs — line by line</h2>
+<table><tr><th>category</th><th>typical vendor</th><th>per user</th><th>seats</th><th>a year</th></tr>
+<tr><td>Case management (claims/legal)</td><td>Leap or Proclaim (Access Legal)</td><td class="num">£120/user/mo</td><td class="num">70</td><td class="num">£100,800/yr</td></tr>
+<tr><td>CRM</td><td>Zoho CRM Professional (or HubSpot Starter class)</td><td class="num">£15/user/mo</td><td class="num">15</td><td class="num">£2,700/yr</td></tr>
+<tr><td>E-signature</td><td>DocuSign Standard (or Adobe Acrobat Sign class)</td><td class="num">£15/user/mo</td><td class="num">20</td><td class="num">£3,600/yr</td></tr>
+<tr><td>Document generation/automation</td><td>Woodpecker / Docmosis / HotDocs class</td><td class="num">£10/user/mo</td><td class="num">40</td><td class="num">£4,800/yr</td></tr>
+<tr><td>Accounting / practice finance</td><td>Xero Premium (or Sage Business Cloud)</td><td class="num">£10/user/mo</td><td class="num">5</td><td class="num">£600/yr</td></tr>
+<tr><td>HR &amp; ATS</td><td>Breathe HR (+ entry ATS module)</td><td class="num">£2/user/mo</td><td class="num">100</td><td class="num">£2,400/yr</td></tr>
+<tr><td>Comms suite (email/office/Teams)</td><td>Microsoft 365 Business Standard</td><td class="num">£10/user/mo</td><td class="num">100</td><td class="num">£12,000/yr</td></tr>
+<tr><td>Storage / file share</td><td>SharePoint/OneDrive (in M365) + top-up</td><td class="num">£2/user/mo</td><td class="num">100</td><td class="num">£2,400/yr</td></tr>
+<tr><td>Per-seat AI assistant</td><td>ChatGPT Team (or Microsoft 365 Copilot)</td><td class="num">£19/user/mo</td><td class="num">40</td><td class="num">£9,120/yr</td></tr>
+<tr><td>Phone &amp; SMS (VoIP/contact)</td><td>3CX / CircleLoop / RingCentral Core class</td><td class="num">£8/user/mo</td><td class="num">100</td><td class="num">£9,600/yr</td></tr>
+<tr><td colspan="4"><b>the rented total</b></td><td class="num"><b>£148,020/yr</b></td></tr>
+</table>
+<p class="quiet">prices are knowledge-dated estimates — re-cite every figure from the vendor page before any sales use.</p>
 
-<div class="modal-bg" id="brand-modal">
-  <div class="modal">
-    <button class="close" data-close="brand-modal">×</button>
-    <h2>◊ company brand</h2>
-    <p style="color:var(--dim);font-size:13px;font-family:'IBM Plex Mono',monospace">One config the shell + every organ reads. Saved locally · nothing leaves your browser.</p>
-    <label>company name</label>
-    <input type="text" id="brand-input" placeholder="Your Company Ltd" />
-    <label>tagline</label>
-    <input type="text" id="tag-input" placeholder="your sovereign company" />
-    <label>handle (used for fork namespace)</label>
-    <input type="text" id="handle-input" placeholder="yourcompany" />
-    <div style="display:flex;gap:8px;margin-top:18px">
-      <button class="btn primary" id="brand-save">Save</button>
-    </div>
-  </div>
-</div>
+<div class="honest"><b>the honest wire, whole:</b> every agent seat above DECLARES what must be
+plugged in before it runs — the data, the keys, the systems. Declared is the opposite of hidden:
+this page never claims a seat works until its wire is in. The estate tools linked are live and
+gate-proven; the gaps are printed verbatim from the research, because a company you can trust is
+one that tells you where it is thin. Multi-user sync is the structural gap across the suite —
+today's tools are device-local by design; a shared-queue layer is the first build of any real
+engagement. Nothing on this page is for sale as-is: firm-fit is scoped person-to-person at
+<a href="https://sjgant80-hub.github.io/ai-nativesolutions/">AI Native Solutions</a>, builds from £300.
+See also <a href="https://sjgant80-hub.github.io/fallforce/verticals.html">the regulated shelf</a> ·
+<a href="https://sjgant80-hub.github.io/fallforce/stack.html">the owned stack</a>.</div>
 
-<div class="palette-bg" id="palette-bg">
-  <div class="palette">
-    <input type="text" id="palette-input" placeholder="jump to an organ · type 'CRM', 'meetings', 'invoice', 'audit'…" />
-    <div class="palette-results" id="palette-results"></div>
-  </div>
-</div>
-
-<script>
-'use strict';
-
-// =====================================================================
-// FallCorp v0.2 · prime 1327 · the sovereign company AIOS
-// =====================================================================
-
-const $ = (s) => document.querySelector(s);
-const $$ = (s) => Array.from(document.querySelectorAll(s));
-
-// ── REGISTRY · loaded live ─────────────────────────────────────────
-const REGISTRY_URL = 'https://raw.githubusercontent.com/sjgant80-hub/fall-registry/main/index.json';
-
-const REGISTRY_CATS = ['apps','apis','sdks','research','infra','plugins'];
-let REGISTRY = null;
-let ORGANS = []; // flat normalised list
-
-// ── 9-LAYER ANATOMY · the AIOS layout for SMB ──────────────────────
-const ANATOMY = [
-  { L:'L9', lbl:'window manager · the shell',  organ:'FallCorp (you are here)' },
-  { L:'L8', lbl:'shell · onboarding · tutor',  organ:'ExitEngine · GroundLevel' },
-  { L:'L7', lbl:'identity · provenance',       organ:'Konomi Ed25519' },
-  { L:'L6', lbl:'network · federation',        organ:'fall-signal · niceassos-mesh' },
-  { L:'L5', lbl:'memory · the company cube',   organ:'FallMind v2 · talk-compact' },
-  { L:'L4', lbl:'process scheduler · routing', organ:'FallCompass · LLM cascade' },
-  { L:'L3', lbl:'organs · the body',           organ:'140+ Fall* tools' },
-  { L:'L2', lbl:'bootloader · adaptive seed',  organ:'FallStack · audit your bill' },
-  { L:'L1', lbl:'kernel · loop runner',        organ:'si-didy · the operator' },
-];
-
-// ── DEPARTMENT TAXONOMY · maps an org chart to organs ──────────────
-const DEPARTMENTS = [
-  { id:'sales',      glyph:'◆', name:'Sales',                 match:[/crm|pipeline|deal|prospect|outreach|reach|slot|booking|schedul/i],
-                     hint:['fallcrm','fallreach','fallslot','fallform','fallforce'] },
-  { id:'marketing',  glyph:'◇', name:'Marketing & Brand',     match:[/email|list|mailchimp|campaign|post|carousel|linkedin|audio|content|brand|reach|seo|guild/i],
-                     hint:['falllist','fallpost','fallcarousel','fallguild','audiofabric'] },
-  { id:'finance',    glyph:'◈', name:'Finance & Accounting',  match:[/invoice|billing|payment|ap|ar|cashflow|accounts|stripe|payroll|expense|finan/i],
-                     hint:['fallinvoice','fallap','fallflow','fallaccount','fallpay'] },
-  { id:'ops',        glyph:'◧', name:'Operations',            match:[/ops|scribe|meeting|notes|task|project|workflow|gymops|apex|procurement|kit/i],
-                     hint:['fallscribe','gymops','fallforce','fallmap','fallfind'] },
-  { id:'hr',         glyph:'◓', name:'People & HR',           match:[/hire|recruit|interview|hr|people|payroll|onboard|culture|learn|train|teach/i],
-                     hint:['fallhire','falllearn','exitengine','fallvault'] },
-  { id:'legal',      glyph:'◭', name:'Legal & Compliance',    match:[/legal|law|euaiact|compliance|audit|vetter|kqtt|policy|gdpr|privacy|euaia|shield|euaia/i],
-                     hint:['groundlevel','fall-euaiact','fall-vetter','fallshield'] },
-  { id:'strategy',   glyph:'◬', name:'Strategy & Research',   match:[/operator|substrate|verify|raas|research|strategy|consult|deep|forge|fab|oracle|cassie/i],
-                     hint:['operator','fall-substrate','fall-verify','fall-raas','forge-lab'] },
-  { id:'it',         glyph:'◉', name:'IT & Infrastructure',   match:[/core|api|mcp|cube|cdn|factory|palette|hot|registry|gateway|mesh|net|onion|infra/i],
-                     hint:['fallcore','fallcore-factory','fallcore-mcp','fall-palette','fall-hot','fall-registry','fallnet'] },
-  { id:'owner',      glyph:'◊', name:'Owner / Personal',      match:[/botler|shadow|copy.gate|exit|personal|jung|compass|copy|recom|fab/i],
-                     hint:['botler','shadowcompass','copy-gate','exitengine','fallback','fallstack','fallcorp'] },
-];
-
-// ── KNOWN EXTRA ORGANS not always in registry yet ──────────────────
-const EXTRAS = [
-  { name:'FallLearn v2', url:'https://sjgant80-hub.github.io/falllearn/',   source:'https://github.com/sjgant80-hub/falllearn',   kind:'app', category:'tutor', purpose:'L8 of the AIOS · the adaptive sovereign tutor · teaches you to expand your fork', tier:'A', status:'live', prime:5 },
-  { name:'FallCorp',    url:'https://sjgant80-hub.github.io/fallcorp/',    source:'https://github.com/sjgant80-hub/fallcorp',    kind:'app', category:'meta', purpose:'The company AIOS · 9-layer SMB shell · this tool', tier:'A', status:'live', prime:1327 },
-  { name:'FallStack',   url:'https://sjgant80-hub.github.io/fallstack/',   source:'https://github.com/sjgant80-hub/fallstack',   kind:'app', category:'audit', purpose:'SaaS audit + sovereign migration engine · L2 bootloader for the corp fork', tier:'A', status:'live', prime:1321 },
-  { name:'FallScribe',  url:'https://sjgant80-hub.github.io/fallscribe/',  source:'https://github.com/sjgant80-hub/fallscribe',  kind:'app', category:'ops', purpose:'Sovereign meeting notes · Granola wedge', tier:'A', status:'live', prime:1319 },
-  { name:'FallBack',    url:'https://sjgant80-hub.github.io/fallback/',    source:'https://github.com/sjgant80-hub/fallback',    kind:'app', category:'rights', purpose:'Rights & refund engine · cancel/refund/claim', tier:'A', status:'live', prime:1307 },
-];
-
-// ── START HERE pins (shown at the top of the dashboard) ────────────
-const PINS = ['FallLearn v2', 'FallStack', 'FallCorp'];
-
-// =====================================================================
-// STATE + INDEXEDDB
-// =====================================================================
-const DB_NAME = 'fallcorp-v2';
-const DB_VER = 1;
-function openDB() {
-  return new Promise((res, rej) => {
-    const r = indexedDB.open(DB_NAME, DB_VER);
-    r.onupgradeneeded = (e) => {
-      const db = e.target.result;
-      ['config','keys','contacts','registry'].forEach(s => {
-        if (!db.objectStoreNames.contains(s)) db.createObjectStore(s);
-      });
-    };
-    r.onsuccess = () => res(r.result);
-    r.onerror = () => rej(r.error);
-  });
-}
-async function dbPut(s,k,v){const db=await openDB();return new Promise((r,j)=>{const tx=db.transaction(s,'readwrite');tx.objectStore(s).put(v,k);tx.oncomplete=()=>r();tx.onerror=()=>j(tx.error);});}
-async function dbGet(s,k){const db=await openDB();return new Promise((r,j)=>{const tx=db.transaction(s,'readonly');const q=tx.objectStore(s).get(k);q.onsuccess=()=>r(q.result);q.onerror=()=>j(q.error);});}
-
-const state = {
-  konomi: { pub:null, priv:null, source:'none' },
-  brand: { name:'FallCorp', tag:'your sovereign company', handle:null },
-  currentOrgan: null,
-  navFilter: '',
-  contacts: 0,
-  collapsed: new Set(),
-};
-
-// =====================================================================
-// REGISTRY LOAD + NORMALISATION
-// =====================================================================
-async function loadRegistry() {
-  // try cache first for fast paint
-  const cached = await dbGet('registry','snapshot');
-  if (cached) {
-    REGISTRY = cached.data;
-    buildOrgans();
-    renderEverything();
-  }
-  // refresh in background
-  try {
-    const r = await fetch(REGISTRY_URL, { cache: 'no-cache' });
-    if (r.ok) {
-      const j = await r.json();
-      REGISTRY = j;
-      await dbPut('registry','snapshot', { data: j, ts: Date.now() });
-      buildOrgans();
-      renderEverything();
-    } else if (!cached) {
-      $('#nav').innerHTML = '<div class="loading-state">✗ could not load registry</div>';
-    }
-  } catch (e) {
-    if (!cached) $('#nav').innerHTML = '<div class="loading-state">✗ registry offline · check connection</div>';
-  }
-}
-
-function buildOrgans() {
-  if (!REGISTRY) { ORGANS = []; return; }
-  const seen = new Set();
-  const out = [];
-  for (const cat of REGISTRY_CATS) {
-    if (!Array.isArray(REGISTRY[cat])) continue;
-    for (const e of REGISTRY[cat]) {
-      if (!e || !e.name) continue;
-      const key = (e.name + '|' + (e.url||'')).toLowerCase();
-      if (seen.has(key)) continue;
-      seen.add(key);
-      out.push({ ...e, _section: cat });
-    }
-  }
-  // append EXTRAS (today's builds + meta organs) if not already present
-  for (const e of EXTRAS) {
-    const key = (e.name + '|' + (e.url||'')).toLowerCase();
-    if (seen.has(key)) continue;
-    seen.add(key);
-    out.push({ ...e, _section: 'apps' });
-  }
-  // assign each organ to a department (by hint or by match)
-  for (const o of out) {
-    o._dept = pickDept(o);
-  }
-  // sort: tier A first, then by prime asc, then by name
-  out.sort((a,b) => {
-    const ta = (a.tier === 'A' ? 0 : a.tier === 'B' ? 1 : 2);
-    const tb = (b.tier === 'A' ? 0 : b.tier === 'B' ? 1 : 2);
-    if (ta !== tb) return ta - tb;
-    return (a.prime||9999) - (b.prime||9999) || (a.name||'').localeCompare(b.name||'');
-  });
-  ORGANS = out;
-  $('#organ-count').textContent = ORGANS.length;
-  $('#qs-organs').textContent = ORGANS.length;
-  $('#qs-depts').textContent = DEPARTMENTS.length;
-}
-
-function pickDept(o) {
-  const id = (o.name || '').toLowerCase().replace(/[^a-z0-9-]/g, '');
-  // hint match first
-  for (const d of DEPARTMENTS) {
-    if (d.hint.includes(id)) return d.id;
-  }
-  // regex match
-  const hay = `${o.name||''} ${o.purpose||''} ${o.category||''} ${o.domain||''}`.toLowerCase();
-  for (const d of DEPARTMENTS) {
-    for (const re of d.match) {
-      if (re.test(hay)) return d.id;
-    }
-  }
-  return 'owner'; // default bucket
-}
-
-// =====================================================================
-// KONOMI
-// =====================================================================
-async function mintKonomi() {
-  try {
-    const pair = await crypto.subtle.generateKey({ name:'Ed25519' }, false, ['sign','verify']);
-    const raw = await crypto.subtle.exportKey('raw', pair.publicKey);
-    const pubHex = Array.from(new Uint8Array(raw)).map(b=>b.toString(16).padStart(2,'0')).join('');
-    state.konomi = { pub: pubHex, priv: pair.privateKey, source:'web-crypto-ed25519' };
-  } catch (e) {
-    const buf = new Uint8Array(32); crypto.getRandomValues(buf);
-    state.konomi = { pub: Array.from(buf).map(b=>b.toString(16).padStart(2,'0')).join(''), priv: null, source:'fallback-random' };
-  }
-  await dbPut('keys','konomi', state.konomi);
-}
-
-// =====================================================================
-// RENDER
-// =====================================================================
-function renderEverything() {
-  renderSidebar();
-  renderAnatomy();
-  renderDepts();
-}
-
-function renderSidebar() {
-  const nav = $('#nav');
-  nav.innerHTML = '';
-
-  // Dashboard shortcut
-  const home = document.createElement('a');
-  home.className = 'nav-item' + (state.currentOrgan ? '' : ' active');
-  home.dataset.id = '_home';
-  home.href = '#';
-  home.innerHTML = '<span class="glyph">◊</span><span class="nm">Dashboard</span>';
-  home.addEventListener('click', (e) => { e.preventDefault(); showWelcome(); });
-  nav.appendChild(home);
-
-  // Group organs by department · respect filter
-  const q = state.navFilter.toLowerCase();
-  for (const d of DEPARTMENTS) {
-    const items = ORGANS.filter(o => o._dept === d.id && matchesFilter(o, q));
-    if (!items.length) continue;
-    const h = document.createElement('div');
-    h.className = 'nav-section' + (state.collapsed.has(d.id) ? ' collapsed' : '');
-    h.dataset.dept = d.id;
-    h.innerHTML = `<span>${d.glyph} ${d.name}</span><span><span class="count">${items.length}</span> <span class="caret">▼</span></span>`;
-    h.addEventListener('click', () => {
-      if (state.collapsed.has(d.id)) state.collapsed.delete(d.id);
-      else state.collapsed.add(d.id);
-      renderSidebar();
-    });
-    nav.appendChild(h);
-    const wrap = document.createElement('div');
-    wrap.className = 'nav-items';
-    for (const o of items) {
-      const a = document.createElement('a');
-      a.className = 'nav-item' + (state.currentOrgan?.name === o.name ? ' active' : '');
-      a.dataset.id = o.name;
-      a.href = '#' + slug(o.name);
-      a.innerHTML = `<span class="glyph">${tierGlyph(o)}</span><span class="nm">${escapeHtml(o.name)}</span>${o.tier && o.tier !== 'A' ? `<span class="tier">${o.tier}</span>` : ''}`;
-      a.addEventListener('click', (e) => { e.preventDefault(); loadOrgan(o); });
-      wrap.appendChild(a);
-    }
-    nav.appendChild(wrap);
-  }
-}
-
-function matchesFilter(o, q) {
-  if (!q) return true;
-  const hay = `${o.name||''} ${o.purpose||''} ${o.category||''} ${o.domain||''} ${o.kind||''}`.toLowerCase();
-  return q.split(/\s+/).every(tok => hay.includes(tok));
-}
-
-function tierGlyph(o) {
-  if (o.status === 'private') return '◐';
-  if (o.tier === 'A') return '◆';
-  if (o.tier === 'B') return '◇';
-  return '◌';
-}
-
-function slug(s) { return (s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
-function escapeHtml(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-
-function renderAnatomy() {
-  for (const target of ['#anatomy','#anatomy-modal-body']) {
-    const el = $(target);
-    if (!el) continue;
-    el.innerHTML = '';
-    for (const a of ANATOMY) {
-      const d = document.createElement('div');
-      d.className = 'layer';
-      d.innerHTML = `<span class="L">${a.L}</span><span class="lbl">${a.lbl}</span><span class="organ">${a.organ}</span>`;
-      el.appendChild(d);
-    }
-  }
-}
-
-function renderPins() {
-  const wrap = $('#pin-grid');
-  if (!wrap) return;
-  wrap.innerHTML = '';
-  for (const name of PINS) {
-    const o = ORGANS.find(x => x.name === name);
-    if (!o) continue;
-    const card = document.createElement('div');
-    card.className = 'dept';
-    card.style.borderColor = 'var(--brass)';
-    card.style.background = 'rgba(184,151,74,.05)';
-    card.innerHTML = `
-      <div class="head"><span>◊ ${escapeHtml(o.name)}</span><span>tier ${o.tier||'A'}</span></div>
-      <div class="nm">${escapeHtml(o.name)}</div>
-      <div class="tools" style="color:var(--cream);opacity:.9">${escapeHtml(o.purpose || '')}</div>
-    `;
-    card.onclick = () => loadOrgan(o);
-    wrap.appendChild(card);
-  }
-}
-
-function renderDepts() {
-  renderPins();
-  const wrap = $('#dept-grid');
-  wrap.innerHTML = '';
-  for (const d of DEPARTMENTS) {
-    const items = ORGANS.filter(o => o._dept === d.id);
-    if (!items.length) continue;
-    const card = document.createElement('div');
-    card.className = 'dept';
-    const top = items.slice(0, 6);
-    card.innerHTML = `
-      <div class="head"><span>${d.glyph} ${d.name}</span><span>${items.length} organs</span></div>
-      <div class="nm">${escapeHtml(d.name)}</div>
-      <div class="tools">${top.map(o => `<span>${escapeHtml(o.name)}</span>`).join('')}${items.length > 6 ? ` <span style="color:var(--dim)">+${items.length-6} more</span>` : ''}</div>
-    `;
-    card.onclick = () => {
-      // expand that section in sidebar and scroll to it
-      state.collapsed.delete(d.id);
-      renderSidebar();
-      const sec = $$(`.nav-section[data-dept="${d.id}"]`)[0];
-      if (sec) sec.scrollIntoView({ behavior:'smooth', block:'center' });
-    };
-    wrap.appendChild(card);
-  }
-}
-
-// =====================================================================
-// LOAD ORGAN
-// =====================================================================
-let welcomeNode = null;
-
-function showWelcome() {
-  state.currentOrgan = null;
-  const fw = $('#frame-wrap');
-  fw.innerHTML = '';
-  if (welcomeNode) fw.appendChild(welcomeNode);
-  $('#topbar-title').textContent = state.brand.name + ' · the sovereign company';
-  $('#topbar-meta').textContent = '9-layer AIOS · Ctrl+K to jump · click any organ';
-  $('#btn-open-new').style.display = 'none';
-  $('#btn-source').style.display = 'none';
-  history.replaceState(null,'','#');
-  renderSidebar();
-}
-
-function loadOrgan(o) {
-  state.currentOrgan = o;
-  $('#topbar-title').textContent = `${tierGlyph(o)} ${o.name}`;
-  $('#topbar-meta').textContent = (o.purpose || o.category || '').slice(0, 96);
-  const btn = $('#btn-open-new');
-  btn.style.display = 'inline-flex'; btn.href = o.url || '#';
-  const src = $('#btn-source');
-  if (o.source) { src.style.display = 'inline-flex'; src.href = o.source; } else { src.style.display = 'none'; }
-
-  const fw = $('#frame-wrap');
-  fw.innerHTML = '';
-  const notice = document.createElement('div');
-  notice.className = 'notice';
-  notice.innerHTML = `◊ loading <b>${escapeHtml(o.name)}</b> in-frame · some pages block iframe embedding · use "Open ↗" if the panel below stays blank · all organs work standalone.`;
-  fw.appendChild(notice);
-  if (o.url) {
-    const f = document.createElement('iframe');
-    f.src = o.url; f.title = o.name;
-    f.allow = 'clipboard-read; clipboard-write; microphone; camera; storage-access; autoplay';
-    f.referrerPolicy = 'no-referrer';
-    fw.appendChild(f);
-  } else {
-    const nourl = document.createElement('div');
-    nourl.className = 'loading-state';
-    nourl.innerHTML = `<p>${escapeHtml(o.name)} has no live URL listed in the registry yet.</p><p style="color:var(--brass)"><a href="${o.source || '#'}" target="_blank">view source ↗</a></p>`;
-    fw.appendChild(nourl);
-  }
-  history.replaceState(null,'','#' + slug(o.name));
-  renderSidebar();
-
-  if (window.nas?.isForkPresent?.()) {
-    try { window.nas.broadcast('tool_visited', { tool: o.name, via:'fallcorp' }); } catch(_) {}
-  }
-}
-
-// =====================================================================
-// COMMAND PALETTE
-// =====================================================================
-const pState = { sel:0, results:[] };
-function openPalette(){ $('#palette-bg').classList.add('open'); $('#palette-input').value=''; $('#palette-input').focus(); refreshPalette(); }
-function closePalette(){ $('#palette-bg').classList.remove('open'); }
-function refreshPalette(){
-  const q = $('#palette-input').value.toLowerCase().trim();
-  const items = ORGANS.filter(o => matchesFilter(o, q)).slice(0, 12);
-  pState.results = items; pState.sel = 0;
-  const r = $('#palette-results'); r.innerHTML='';
-  items.forEach((o,i)=>{
-    const d = document.createElement('div');
-    d.className = 'palette-result' + (i===0?' sel':'');
-    const dept = DEPARTMENTS.find(x => x.id === o._dept);
-    d.innerHTML = `<span class="glyph">${tierGlyph(o)}</span><span>${escapeHtml(o.name)}</span><span class="cat">${dept ? dept.name : (o.category||'')}</span>`;
-    d.onclick = () => { loadOrgan(o); closePalette(); };
-    r.appendChild(d);
-  });
-}
-
-// =====================================================================
-// MODALS
-// =====================================================================
-function openModal(id) { $('#' + id).classList.add('open'); }
-function closeModal(id) { $('#' + id).classList.remove('open'); }
-
-async function saveBrand() {
-  state.brand.name = $('#brand-input').value.trim() || 'FallCorp';
-  state.brand.tag = $('#tag-input').value.trim() || 'your sovereign company';
-  state.brand.handle = $('#handle-input').value.trim().toLowerCase().replace(/[^a-z0-9]/g,'') || null;
-  await dbPut('config','brand', state.brand);
-  $('#brand-name').textContent = state.brand.name;
-  if (!state.currentOrgan) showWelcome();
-  closeModal('brand-modal');
-}
-
-// =====================================================================
-// CROSS-ORGAN BUS
-// =====================================================================
-let signalCh = null;
-try { signalCh = new BroadcastChannel('fall-signal'); } catch(_) {}
-if (signalCh) {
-  signalCh.onmessage = (e) => {
-    const m = e.data;
-    if (!m || !m.kind) return;
-    if (m.kind.startsWith('contact:') || m.kind === 'crm:contact') {
-      state.contacts = (state.contacts || 0) + 1;
-      $('#qs-contacts').textContent = state.contacts;
-    }
-  };
-}
-
-// =====================================================================
-// WIRE UP
-// =====================================================================
-window.addEventListener('DOMContentLoaded', async () => {
-  const cfg = await dbGet('config','brand');
-  if (cfg) state.brand = { ...state.brand, ...cfg };
-  $('#brand-name').textContent = state.brand.name;
-
-  const kk = await dbGet('keys','konomi');
-  if (kk) state.konomi = kk; else await mintKonomi();
-
-  welcomeNode = $('#welcome');
-
-  $('#btn-anatomy').onclick = () => openModal('anatomy-modal');
-
-  // ─── ◊·κ=φ⁴ · FallForge wiring ──────────────────────────────
-  async function refreshForgedSidebar() {
-    if (!window.FallForge) return;
-    try {
-      const items = await window.FallForge.listLocalOrgans();
-      // strip any prior forge entries from ORGANS to avoid duplicates
-      ORGANS = ORGANS.filter(o => o._source !== 'fall-forge');
-      for (const it of items) {
-        ORGANS.push({
-          name: it.name,
-          purpose: 'forged · ' + (it.domain || '') + (it.brand?.name ? ' · ' + it.brand.name : ''),
-          category: 'forged',
-          url: it.blobUrl,
-          source: null,
-          tier: 'A',
-          status: 'live',
-          prime: it.prime,
-          _source: 'fall-forge',
-          _forgedId: it.id,
-        });
-      }
-      // re-route every forged organ into the "forged" department
-      DEPARTMENTS.forEach(d => { /* untouched */ });
-      // add (or update) a 'forged' department once
-      if (!DEPARTMENTS.find(d => d.id === 'forged')) {
-        DEPARTMENTS.push({ id:'forged', glyph:'◊', name:'Forged (this fork)',
-                           match:[/^forged$/], hint:[] });
-      }
-      // bias the dept picker for forge organs
-      ORGANS.filter(o => o._source === 'fall-forge').forEach(o => { o._dept = 'forged'; });
-      $('#organ-count').textContent = ORGANS.length;
-      $('#qs-organs').textContent = ORGANS.length;
-      renderSidebar();
-      renderDepts();
-    } catch(_) {}
-  }
-
-  // open the forge wizard pre-filled with this fork's context
-  $('#btn-forge').onclick = () => {
-    if (!window.FallForge) { alert('FallForge CDN still loading · give it a second.'); return; }
-    window.FallForge.openWizard({
-      context: {
-        konomi_pub: state.konomi.pub,
-        brand: {
-          name: state.brand.name || 'My Co',
-          primary_color: '#b8974a',
-        },
-        fallmind_namespace: window.nas?.fork?.fallmind_namespace || ('fork-' + (state.konomi.pub || '').slice(0, 8)),
-      },
-      onForged: async (organ) => { await refreshForgedSidebar(); },
-    });
-  };
-
-  // listen for forge events from anywhere
-  try {
-    const ffCh = new BroadcastChannel('fall-signal');
-    ffCh.onmessage = (e) => {
-      const m = e.data;
-      if (m && (m.kind === 'fall-forge:organ_minted' || m.kind === 'fall-forge:organ_deleted')) {
-        refreshForgedSidebar();
-      }
-    };
-  } catch(_) {}
-
-  // wait for FallForge to be ready then surface any prior local forges
-  document.addEventListener('fall-forge:ready', refreshForgedSidebar);
-  if (window.FallForge) refreshForgedSidebar();
-
-  $('#btn-identity').onclick = () => {
-    $('#id-pub').textContent = state.konomi.pub || '(no key)';
-    $('#id-source').textContent = state.konomi.source;
-    openModal('id-modal');
-  };
-  $('#btn-brand').onclick = () => {
-    $('#brand-input').value = state.brand.name || '';
-    $('#tag-input').value = state.brand.tag || '';
-    $('#handle-input').value = state.brand.handle || '';
-    openModal('brand-modal');
-  };
-  $$('[data-close]').forEach(b => b.onclick = () => closeModal(b.dataset.close));
-  $('#id-mint').onclick = async () => { await mintKonomi(); $('#id-pub').textContent = state.konomi.pub; $('#id-source').textContent = state.konomi.source; };
-  $('#id-copy').onclick = async () => { try { await navigator.clipboard.writeText(state.konomi.pub); } catch(_) {} };
-  $('#brand-save').onclick = saveBrand;
-
-  // sidebar search
-  $('#sb-search').addEventListener('input', (e) => {
-    state.navFilter = e.target.value;
-    renderSidebar();
-  });
-
-  // palette
-  document.addEventListener('keydown', (e) => {
-    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); openPalette(); return; }
-    if (e.key === 'Escape') { closePalette(); $$('.modal-bg').forEach(m => m.classList.remove('open')); }
-    if ($('#palette-bg').classList.contains('open')) {
-      if (e.key === 'ArrowDown') { e.preventDefault(); pState.sel = Math.min(pState.sel+1, pState.results.length-1); updateSel(); }
-      else if (e.key === 'ArrowUp') { e.preventDefault(); pState.sel = Math.max(pState.sel-1, 0); updateSel(); }
-      else if (e.key === 'Enter' && pState.results[pState.sel]) { loadOrgan(pState.results[pState.sel]); closePalette(); }
-    }
-  });
-  function updateSel(){ $$('#palette-results .palette-result').forEach((el,i)=>el.classList.toggle('sel', i===pState.sel)); }
-  $('#palette-input').addEventListener('input', refreshPalette);
-  $('#palette-bg').addEventListener('click', (e) => { if (e.target.id === 'palette-bg') closePalette(); });
-
-  // load registry, then handle hash deeplink
-  await loadRegistry();
-  const h = location.hash.replace(/^#/, '');
-  if (h) {
-    const found = ORGANS.find(o => slug(o.name) === h);
-    if (found) loadOrgan(found);
-  }
-  if (!state.currentOrgan) showWelcome();
-
-  console.log('%c◊·κ=φ⁴ FallCorp v0.2 · prime 1327 · the sovereign company AIOS · ' + ORGANS.length + ' organs', 'color:#b8974a;font-weight:bold');
-});
-
-window.FallCorp = { state, ORGANS, DEPARTMENTS, ANATOMY, loadOrgan, mintKonomi };
-</script>
-
-</body>
-</html>
+<footer>generated from company-data.json through the gated org law (company.mjs, witness 27/27) —
+no number typed by hand · researched by the didy fan-out, judged at the frontier
+· Konomi Architecture</footer>
+</body></html>

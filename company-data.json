@@ -1,0 +1,509 @@
+{
+ "costs": {
+  "notes": "DOCTRINE CAVEAT — READ FIRST: every figure below is a knowledge-cutoff price (assistant cutoff Jan 2026, most price points last verified 2024–2025 list pricing). None of these numbers may be quoted, published, or used in any sales material, proposal, or ROI deck until re-cited against the vendor's live UK price page. Prices are stated at the CONSERVATIVE (low) end of the realistic mid-tier range, so the true 2026 stack for a real firm is likely HIGHER, not lower — this estimate is a floor, not a midpoint. Assumptions: 100 staff; ~70 fee-earners/claims handlers, ~15 intake/sales, ~5 finance, ~10 admin/management; annual-billing prices; USD prices converted at ~£1=$1.25 where vendors quote USD. Indicative conservative monthly total on these figures: case mgmt £8,400 + CRM £225 + e-sign £300 + doc-gen £400 + accounting £50 + HR £200 + M365 £1,030 + storage £200 + AI £760 + phone/SMS £800 ≈ £12,365/mo ≈ £148k/yr — again, a floor. Confidence is stated per line; the weakest lines are case management (opaque, negotiated pricing) and document generation (often bundled). Overlaps honestly flagged: doc-gen and storage are frequently included in the case-management and M365 licences respectively, so a lean firm could delete those two lines.",
+  "stack": [
+   {
+    "category": "Case management (claims/legal)",
+    "typicalVendor": "Leap or Proclaim (Access Legal)",
+    "perUserMo": 120,
+    "seats": 70,
+    "basis": "LOW confidence. Leap and Proclaim do not publish UK list prices; pricing is negotiated. Widely-reported UK figures at knowledge cutoff put Leap around £150-£199/user/mo and Proclaim in a similar or slightly lower band at volume, with 70+ seat deals discounted. £120 is the conservative volume-discounted end. This is the single biggest and least certain line — MUST be re-quoted from the vendor before any sales use. Seats: fee-earners/handlers only; admin often shares licences."
+   },
+   {
+    "category": "CRM",
+    "typicalVendor": "Zoho CRM Professional (or HubSpot Starter class)",
+    "perUserMo": 15,
+    "seats": 15,
+    "basis": "MEDIUM confidence. Zoho CRM Professional was ~£14-16/user/mo (annual) at cutoff; HubSpot Sales Pro is far higher (~£80+) so the conservative pick is the Zoho class. Only intake/sales/marketing staff need seats; claims handlers live in the case-management system, not the CRM."
+   },
+   {
+    "category": "E-signature",
+    "typicalVendor": "DocuSign Standard (or Adobe Acrobat Sign class)",
+    "perUserMo": 15,
+    "seats": 20,
+    "basis": "MEDIUM confidence. DocuSign Standard listed ~$25/user/mo annual (~£20) at cutoff; smaller UK-friendly rivals (Signable, SignNow) sit at £8-15. £15 is the conservative blend. Only staff who actually send envelopes (intake, settlements, HR) need seats — envelope-based plans can be cheaper still for low volume."
+   },
+   {
+    "category": "Document generation/automation",
+    "typicalVendor": "Woodpecker / Docmosis / HotDocs class",
+    "perUserMo": 10,
+    "seats": 40,
+    "basis": "LOW-MEDIUM confidence, and an honest overlap warning: Leap/Proclaim both include document automation, so many firms pay £0 extra here. Standalone doc-gen tools ran roughly £10-30/user/mo at cutoff. £10 x 40 drafting users is the conservative standalone case; delete this line if the case-management suite covers it."
+   },
+   {
+    "category": "Accounting / practice finance",
+    "typicalVendor": "Xero Premium (or Sage Business Cloud)",
+    "perUserMo": 10,
+    "seats": 5,
+    "basis": "MEDIUM-HIGH confidence with a structural caveat: Xero is priced per ORGANISATION not per user — Premium was ~£47-56/mo total at cutoff with unlimited users. Expressed here as ~£50/mo spread over the 5 finance-team users who actually live in it. If the firm needs SRA-style client-account features, a legal cashiering add-on raises this materially."
+   },
+   {
+    "category": "HR & ATS",
+    "typicalVendor": "Breathe HR (+ entry ATS module)",
+    "perUserMo": 2,
+    "seats": 100,
+    "basis": "MEDIUM confidence. UK SME HR platforms (Breathe, Charlie HR) priced per-employee-per-month at roughly £1.50-3.50 for a 100-head band at cutoff; ATS either bundled or a small flat add-on. £2/employee across all 100 staff is the conservative end. BambooHR class would be 2-3x this."
+   },
+   {
+    "category": "Comms suite (email/office/Teams)",
+    "typicalVendor": "Microsoft 365 Business Standard",
+    "perUserMo": 10,
+    "seats": 100,
+    "basis": "HIGH confidence — this is the best-documented price in the stack. UK list was £9.40/user/mo for years, raised to ~£10.30 (annual commit) in the April 2025 uplift. £10 is the conservative round-down. Every member of staff needs a seat. Note the 300-seat cap on Business plans does not bite at 100 staff."
+   },
+   {
+    "category": "Storage / file share",
+    "typicalVendor": "SharePoint/OneDrive (in M365) + top-up",
+    "perUserMo": 2,
+    "seats": 100,
+    "basis": "MEDIUM confidence, honest overlap: M365 Business Standard already includes 1TB OneDrive per user + SharePoint pooled storage, so baseline storage is £0 incremental. £2/user covers the realistic extra: SharePoint storage top-ups and/or a backup layer (Dropbox Business class at £10-12/user would replace, not add). A firm on a legal DMS (NetDocuments/iManage, £30-45/user) would blow this line up — not assumed at the conservative end."
+   },
+   {
+    "category": "Per-seat AI assistant",
+    "typicalVendor": "ChatGPT Team (or Microsoft 365 Copilot)",
+    "perUserMo": 19,
+    "seats": 40,
+    "basis": "MEDIUM confidence. At cutoff: ChatGPT Team ~$25/user/mo annual (~£19-20 + VAT), M365 Copilot £24.70/user/mo. ChatGPT Team is the conservative pick. Seats: NOT all 100 — realistic deployments licence knowledge workers who demonstrably use it (handlers drafting, management, marketing), ~40 seats. AI pricing is the most volatile category in this whole stack and is the line MOST in need of re-citation before any 2026 sales conversation."
+   },
+   {
+    "category": "Phone & SMS (VoIP/contact)",
+    "typicalVendor": "3CX / CircleLoop / RingCentral Core class",
+    "perUserMo": 8,
+    "seats": 100,
+    "basis": "MEDIUM confidence. UK cloud VoIP ran roughly £5-15/user/mo at cutoff (CircleLoop ~£5-15, RingCentral Core ~£13, 3CX effectively lower per-user when self-hosted). £8 is the conservative mid. All 100 staff get an extension in a claims firm. SMS is usage-billed on top (~2-4p/message UK) and not included in the per-seat figure — a high-volume SMS intake operation must budget that separately."
+   }
+  ]
+ },
+ "coverage": {
+  "departments": [
+   {
+    "dept": "Intake",
+    "tools": [
+     {
+      "name": "fallclaimonboard",
+      "live": true,
+      "url": "https://sjgant80-hub.github.io/fallclaimonboard/",
+      "covers": "FCA CMR-shaped claimant onboarding: capacity assessment, referral-source disclosure, cooling-off register, conflict check, CFA/DBA fee disclosure, ATE, document capture, audit chain. Single HTML, device-local."
+     },
+     {
+      "name": "fallform",
+      "live": true,
+      "url": "https://sjgant80-hub.github.io/fallform/",
+      "covers": "Client-facing intake forms. Mutation-gated (56/63 killed): required-field rule now enforced at accept-time for every field type, multiple-choice answers must be real choices, empty is type-aware."
+     },
+     {
+      "name": "fallslot",
+      "live": true,
+      "url": "https://sjgant80-hub.github.io/fallslot/",
+      "covers": "Appointment booking for initial consultations. Gated: overlap now compared as intervals, not start times — the double-booking fault is fixed."
+     }
+    ],
+    "gaps": "No telephony/call-scripting layer and no lead-source analytics beyond what the CRM records. Bigger structural point: onboarding data is device-local IndexedDB — a 100-person intake team on separate machines has no shared queue; there is no multi-user sync anywhere in this suite."
+   },
+   {
+    "dept": "Case handling",
+    "tools": [
+     {
+      "name": "fallclaim",
+      "live": true,
+      "url": "https://sjgant80-hub.github.io/fallclaim/",
+      "covers": "The core case-management tool, purpose-built for UK claims firms (PI/RTA/EL/PL/clin-neg/housing/financial mis-selling): JC Guideline quantum, Civil Liability Act 2018 whiplash tariff, Ogden multipliers, pre-action protocol trackers, Part 36 register, limitation calculator. Was already at Proven tier before the legal-shelf sweep."
+     },
+     {
+      "name": "redress-engine",
+      "live": true,
+      "url": "https://sjgant80-hub.github.io/redress-engine/",
+      "covers": "Legal-process navigator, accuracy-gated: asserts only verified statutes, never bluffs. Already Proven."
+     }
+    ],
+    "gaps": "Single-file and per-device: no shared caseload, no handler workload allocation, no supervision/file-review workflow, no court-deadline diary shared across fee earners. fallclaim is explicitly a research aid, not a system of record for 100 concurrent handlers."
+   },
+   {
+    "dept": "Document production",
+    "tools": [
+     {
+      "name": "fallclaimpaper",
+      "live": true,
+      "url": "https://sjgant80-hub.github.io/fallclaimpaper/",
+      "covers": "UK claims document generator: CFA/DBA agreements, Letter of Claim, Pre-Action Disclosure, Part 36 offers, Schedule of Loss, Witness Statements, Instructions to Expert, Complaints, Cooling-off, Bill of Costs, N1 narrative. Client data never leaves device."
+     },
+     {
+      "name": "fallsignature",
+      "live": true,
+      "url": "https://sjgant80-hub.github.io/fallsignature/",
+      "covers": "Ed25519 content signing and verification, runs locally."
+     }
+    ],
+    "gaps": "fallsignature is cryptographic content signing, not a client-facing e-signature ceremony (DocuSign-style counterparty flow with identity capture) — a claims firm getting CFAs signed remotely still needs that. No document-management repository: versioning, precedent library, or matter-linked filing. falljustice's lba.mjs response periods are ungated — the letter-before-action deadline arithmetic never goes near the working-day rule."
+   },
+   {
+    "dept": "Firm accounting and client escrow",
+    "tools": [
+     {
+      "name": "fallclaimpractice",
+      "live": true,
+      "url": "https://sjgant80-hub.github.io/fallclaimpractice/",
+      "covers": "Firm-side accounting built for claims firms: client escrow, CFA/DBA/hourly/fixed fee tracker, success-fee accruals, ATE insurance, FCA CMR fees + reporting, complaints register, PII, per-adviser and firm P&L, invoice generator."
+     },
+     {
+      "name": "fallledger",
+      "live": true,
+      "url": "https://sjgant80-hub.github.io/fallledger/",
+      "covers": "Double-entry GL, 38-account UK SME chart of accounts, TB/P&L/Balance Sheet/Cash Flow/VAT, period close. Mutation-gated 100/101: integer pence, fx rate actually applied, trial balance refuses to drop unplaced lines."
+     },
+     {
+      "name": "fallinvoice",
+      "live": true,
+      "url": "https://sjgant80-hub.github.io/fallinvoice/",
+      "covers": "Invoicing with one-click pay. Gated 63/66: one totalsOf() everywhere, lines sum to their own subtotal, currency-correct pay links."
+     },
+     {
+      "name": "fallap",
+      "live": true,
+      "url": "https://sjgant80-hub.github.io/fallap/",
+      "covers": "Accounts-payable side: invoice rewriter with one-click pay."
+     },
+     {
+      "name": "fallbooks",
+      "live": true,
+      "url": "https://sjgant80-hub.github.io/fallbooks/",
+      "covers": "UK accountancy practice tool: SA/CT/VAT/PAYE/Companies House deadline grid, MTD-shaped VAT, payroll RTI shape."
+     }
+    ],
+    "gaps": "The escrow register in fallclaimpractice is a device-local IDB record, not a regulated client-account with bank-feed reconciliation — for real CMC client money handling that reconciliation layer does not exist. No payroll engine adequate for 100 staff (fallbooks is RTI-shaped, not a payroll run). fallledger's display/filter paths still parse amounts their own way for restored files. konomium-vault (the encrypted accounting crown jewel) exists but was not audited this pass."
+   },
+   {
+    "dept": "Compliance and DSAR",
+    "tools": [
+     {
+      "name": "falljustice",
+      "live": true,
+      "url": "https://sjgant80-hub.github.io/falljustice/",
+      "covers": "DSAR engine + Clause-40 letter-before-action with verified, cited case law. Proven: the ICO working-day rule is now computed, not just printed; isOverdue() refuses to accuse without a holiday list."
+     },
+     {
+      "name": "fallclaimonboard",
+      "live": true,
+      "url": "https://sjgant80-hub.github.io/fallclaimonboard/",
+      "covers": "The FCA CMR compliance registers on the intake side: cooling-off, complaints, conflicts, referral disclosure."
+     },
+     {
+      "name": "fallclaimpractice",
+      "live": true,
+      "url": "https://sjgant80-hub.github.io/fallclaimpractice/",
+      "covers": "FCA CMR fees and reporting, complaints register, PII tracking on the firm side."
+     },
+     {
+      "name": "falllist",
+      "live": true,
+      "url": "https://sjgant80-hub.github.io/falllist/",
+      "covers": "Marketing-consent side of compliance: a real suppression list now exists — withdrawal of consent outlives the record, unsubscribe links actually work. Gated 46/47."
+     }
+    ],
+    "gaps": "Honest caveats: falljustice still ships without a bank-holiday list (the kernel accepts one, nothing supplies it, so every deadline carries the caveat). No AML/KYC identity-verification tooling. No FCA regulatory-returns filing (RMAR-style submissions) — fallclaimpractice tracks the numbers but nothing files them. No file-audit/supervision workflow for a compliance team."
+   },
+   {
+    "dept": "HR and recruitment",
+    "tools": [
+     {
+      "name": "fallhire",
+      "live": true,
+      "url": "https://sjgant80-hub.github.io/fallhire/",
+      "covers": "Hiring pipeline + interview scorecard. Gated 54/61: coverage travels with every score, one opinion no longer reads as panel agreement, compare() refuses to rank candidates assessed on unlike evidence."
+     },
+     {
+      "name": "fallrecruit",
+      "live": true,
+      "url": "https://sjgant80-hub.github.io/fallrecruit/",
+      "covers": "UK recruitment agency management. Already Proven."
+     }
+    ],
+    "gaps": "Recruitment is covered; HR proper is not. No HRIS: absence/holiday tracking, right-to-work records, performance reviews, training/CPD records, disciplinary process — none of it exists in the estate. fallgrade (portfolio assessment) is ungated and unexamined. For a 100-person firm this is the thinnest department."
+   },
+   {
+    "dept": "Sales and CRM",
+    "tools": [
+     {
+      "name": "fallforce",
+      "live": true,
+      "url": "https://sjgant80-hub.github.io/fallforce/",
+      "covers": "FallCRM Elite, the CRM flagship: pipeline + forecast. Forecast kernel gated 71/71 with zero baselines — money parsed as money, dead deals stay dead, imports cannot concatenate the pipeline into billions. Stack catalogue live at /stack.html. Known open item: scripts/build-client.js require()-in-ESM crashes npm test."
+     },
+     {
+      "name": "fallcrm",
+      "live": true,
+      "url": "https://sjgant80-hub.github.io/fallcrm/",
+      "covers": "The lighter sovereign single-file CRM (the delete-HubSpot wedge)."
+     },
+     {
+      "name": "falllist",
+      "live": true,
+      "url": "https://sjgant80-hub.github.io/falllist/",
+      "covers": "Newsletter/outbound list with BYOM sending (Resend/Postmark/Mailgun/SendGrid) and a real suppression list."
+     },
+     {
+      "name": "fallcrm-elite",
+      "live": true,
+      "url": "https://sjgant80-hub.github.io/fallcrm-elite/",
+      "covers": "Now a redirect to fallforce — the empty 139-byte page was fixed; a name points at what it names."
+     }
+    ],
+    "gaps": "No claims-specific lead-buying/referral marketplace integration (how CMCs actually acquire volume). fallmail is P2P DID-addressed encrypted messaging, not SMTP — the firm's ordinary business email/mailbox is not covered by the estate at all; falllist covers only outbound broadcast via bring-your-own provider."
+   },
+   {
+    "dept": "IT",
+    "tools": [
+     {
+      "name": "fallmail",
+      "live": true,
+      "url": "https://sjgant80-hub.github.io/fallmail/",
+      "covers": "Internal P2P encrypted messaging (ECDH+AES-GCM, DID-addressed, no server) — an internal comms channel, not external email."
+     },
+     {
+      "name": "fallsignature",
+      "live": true,
+      "url": "https://sjgant80-hub.github.io/fallsignature/",
+      "covers": "Local Ed25519 signing/verification for artifact integrity."
+     },
+     {
+      "name": "witness (trust rail)",
+      "live": true,
+      "url": "https://github.com/sjgant80-hub/witness",
+      "covers": "The mutation+fuzz CI gate (published as a GitHub Action) — the discipline that proved the tools above; an internal-IT quality gate for any code the firm runs."
+     }
+    ],
+    "gaps": "The honest structural gap for the whole firm sits here: every tool is a sovereign single-file, device-local PWA. There is no multi-user sync, no server, no shared database, no backup/restore story, no SSO/identity for 100 staff, no device management, no helpdesk/ticketing. That architecture is the estate's deliberate strength for a sole practitioner and its unsolved problem for a 100-person firm — two handlers on two machines cannot see the same case, and the sell-shelf's double-booking fault showed exactly what concurrent users do to page-local state."
+   }
+  ]
+ },
+ "org": {
+  "seats": [
+   {
+    "role": "FNOL intake handler",
+    "dept": "intake",
+    "kind": "agent",
+    "count": 14,
+    "why": "Answers every inbound channel (phone transcript, webform, email, WhatsApp) all day: captures first notification of loss, structures it into a case record, triages severity and vertical, and books the follow-up. Never closes, never promises outcomes.",
+    "needs": "CRM write access, telephony/transcription feed, webform and mailbox hooks, triage rubric, published service-scope list so it refuses out-of-scope claims loudly"
+   },
+   {
+    "role": "Eligibility and fraud pre-screen agent",
+    "dept": "intake",
+    "kind": "agent",
+    "count": 4,
+    "why": "Runs every new case through eligibility rules, limitation-date checks, duplicate-claim detection, and fraud-signal screens; flags anything ambiguous to a human queue rather than silently rejecting.",
+    "needs": "Read access to case records, limitation/eligibility rule tables, CIFAS/fraud-signal data feed, a refusal log the compliance monitors can audit"
+   },
+   {
+    "role": "Case handler agent",
+    "dept": "case handling",
+    "kind": "agent",
+    "count": 24,
+    "why": "Owns a caseload end to end: chases evidence, updates clients on schedule, computes quantum with a gated calculator kernel, drafts next-step recommendations, and keeps every case file complete. All settlement offers and hard conversations are queued to humans, never spoken by the agent.",
+    "needs": "CRM full case access, gated quantum-calculation kernel, client-comms templates, diary/SLA engine, escalation queue wiring to the human seats"
+   },
+   {
+    "role": "Evidence gatherer agent",
+    "dept": "case handling",
+    "kind": "agent",
+    "count": 5,
+    "why": "All day it requests, chases and files third-party evidence: medical records, engineer reports, bank statements, insurer correspondence. Tracks what is outstanding per case and nags until it lands.",
+    "needs": "Outbound email/letter rail, document store write access, per-case evidence checklists, DSAR-request templates, consent records proving authority to request"
+   },
+   {
+    "role": "Negotiation-prep agent",
+    "dept": "case handling",
+    "kind": "agent",
+    "count": 4,
+    "why": "Builds the settlement position: comparable outcomes, quantum ranges, counterparty history, and a fully drafted offer or counter-offer. The prep rides whole to the human signer — the agent prepares, it never commits.",
+    "needs": "Historic outcomes dataset, case file read access, offer templates, the unsigned-door queue where prepared settlements wait for human sign-off"
+   },
+   {
+    "role": "Settlement sign-off counsel",
+    "dept": "case handling",
+    "kind": "human",
+    "count": 1,
+    "why": "LEGAL SIGNATURE: settlement acceptances, letters before action, and litigation steps bind the client legally; the doctrine says sign-legal is a key-gated door only a human turns. Also judgment on which fights to pick.",
+    "needs": "Legal qualification and PI cover, the door queue of agent-prepared settlements, signing key, direct line to the client for confirmation calls",
+    "law": "legal"
+   },
+   {
+    "role": "Escalation and vulnerable-client handler",
+    "dept": "case handling",
+    "kind": "human",
+    "count": 1,
+    "why": "CLIENT-TRUST MOMENTS: bereavement, distress, vulnerability flags, and complaints that have gone hot are the hard conversations — a human voice or the trust dies. Also the judgment call on goodwill gestures.",
+    "needs": "Priority phone line, full case history on screen, FCA vulnerable-customer training, authority to pause any automated comms on a case instantly",
+    "law": "client-trust"
+   },
+   {
+    "role": "Letter and bundle drafter agent",
+    "dept": "document production",
+    "kind": "agent",
+    "count": 8,
+    "why": "Produces every outbound document: LBAs, claim packs, court bundles, DSAR responses, client updates — from gated templates, correctly paginated and indexed. Anything requiring signature lands in the unsigned queue, not the post.",
+    "needs": "Template library (jurisdiction-correct, versioned), case data read access, document store, the signature queue, a ui-gate style lint that blocks malformed bundles"
+   },
+   {
+    "role": "Ingest, OCR and redaction agent",
+    "dept": "document production",
+    "kind": "agent",
+    "count": 3,
+    "why": "Turns every inbound PDF, photo and scan into searchable, classified, correctly-filed case documents; redacts third-party personal data before anything is shared onward.",
+    "needs": "OCR pipeline, document classifier, redaction rules signed off by compliance, write access to the document store, quarantine bucket for unreadable files"
+   },
+   {
+    "role": "Ledger and reconciliation agent",
+    "dept": "finance and escrow",
+    "kind": "agent",
+    "count": 3,
+    "why": "Keeps the books all day: posts transactions, reconciles the client-money account daily against bank feeds, computes fee deductions per the disclosed schedule, and raises invoices. It can count money; it can never move it.",
+    "needs": "Read-only bank feeds, accounting system write access, the disclosed fee schedule as data, CASS reconciliation rules, daily-break alerting to the client money officer"
+   },
+   {
+    "role": "Payment-run preparation agent",
+    "dept": "finance and escrow",
+    "kind": "agent",
+    "count": 2,
+    "why": "Assembles every payment run — client settlements out of escrow, supplier invoices, refunds — fully verified against the ledger, then queues it unsigned. The scoreboard has no field for money by construction; the run waits for the key.",
+    "needs": "Ledger read access, payee verification data, the unsigned payment-door queue, zero payment-execution credentials by construction"
+   },
+   {
+    "role": "Finance director (payment key-holder)",
+    "dept": "finance and escrow",
+    "kind": "human",
+    "count": 1,
+    "why": "MONEY MOVEMENT: every outbound payment is a door only this seat's key turns. Reviews the agent-prepared run, verifies, signs, releases. The 10% is finance clicks — this is the archetypal one.",
+    "needs": "Banking authorisation credentials (held personally, never in any agent-readable store), payment-approval hardware key, the queued unsigned runs, counsel on first-of-kind payments",
+    "law": "money"
+   },
+   {
+    "role": "Client money (escrow) officer",
+    "dept": "finance and escrow",
+    "kind": "human",
+    "count": 1,
+    "why": "MONEY MOVEMENT plus LEGAL SIGNATURE: releases settlement funds from the client account and personally attests the CASS-style client-money reconciliations regulators hold a named human to.",
+    "needs": "Client-account release authority, daily reconciliation reports from the ledger agents, FCA client-money rules training, personal sign-off log",
+    "law": "money"
+   },
+   {
+    "role": "DSAR fulfilment agent",
+    "dept": "compliance and DSAR",
+    "kind": "agent",
+    "count": 3,
+    "why": "Runs the DSAR engine all day: locates every record on a data subject, compiles, redacts third parties, and computes the statutory deadline in real working days rather than printing the rule. Responses queue for human release when judgment calls on exemptions arise.",
+    "needs": "Search access across all data stores, redaction pipeline, working-day deadline calculator (computed, never quoted), ICO guidance as versioned data, release queue"
+   },
+   {
+    "role": "Compliance monitoring agent",
+    "dept": "compliance and DSAR",
+    "kind": "agent",
+    "count": 3,
+    "why": "Audits the other agents continuously: samples calls, letters, and case decisions against FCA CMCOB rules, fee-disclosure requirements, and financial-promotions rules; every breach candidate goes to the human head with evidence attached.",
+    "needs": "Read access to all comms and case logs, CMCOB rulebook as testable checks, sampling scheduler, breach-evidence store, no power to suppress its own findings"
+   },
+   {
+    "role": "Head of compliance (SMF holder)",
+    "dept": "compliance and DSAR",
+    "kind": "human",
+    "count": 1,
+    "why": "LEGAL SIGNATURE: FCA attestations, regulatory returns, breach notifications and DSAR exemption calls carry personal regulatory liability — a named human under the Senior Managers regime, not delegable to an agent.",
+    "needs": "FCA authorisation as approved person, RegData/Connect portal credentials (personal), the monitoring agents' breach queue, direct unfiltered access to every agent log",
+    "law": "legal"
+   },
+   {
+    "role": "HR operations agent",
+    "dept": "HR",
+    "kind": "agent",
+    "count": 2,
+    "why": "Runs people-admin all day: payroll preparation (queued unsigned to finance), onboarding paperwork, right-to-work checks, leave tracking, training-record upkeep for the ten humans and the agent fleet's access rosters.",
+    "needs": "HRIS access, payroll-prep templates feeding the unsigned payment queue, right-to-work check API, training-record store"
+   },
+   {
+    "role": "Head of people",
+    "dept": "HR",
+    "kind": "human",
+    "count": 1,
+    "why": "CLIENT-TRUST-CLASS HARD CONVERSATIONS turned inward, plus LEGAL SIGNATURE: hiring decisions, employment contracts, disciplinaries and dismissals are judgment calls with legal weight that a human owns face to face.",
+    "needs": "Employment contract signing authority, employment-law counsel on retainer, private HR case files outside agent-readable stores, interview pipeline from the HR ops agent",
+    "law": "legal"
+   },
+   {
+    "role": "Lead-gen and content agent",
+    "dept": "sales and marketing",
+    "kind": "agent",
+    "count": 4,
+    "why": "Produces and posts content on the sanctioned rail (approved API automation, never puppeting a human login), runs the measure-adjust-post-better loop, drafts campaigns, and scores inbound leads. Posting is auto work by doctrine; taste sign-off is not.",
+    "needs": "Sanctioned posting rail with frozen rate limits, analytics read access, brand style rules as data, the taste editor's approval queue for anything novel, outbox for pre-rail drafts"
+   },
+   {
+    "role": "Sales qualifier and nurture agent",
+    "dept": "sales and marketing",
+    "kind": "agent",
+    "count": 3,
+    "why": "Works the pipeline all day: qualifies inbound leads, answers factual product questions, books the close meetings into human closers' diaries, and keeps warm leads warm. It never states fees as final and never closes.",
+    "needs": "CRM pipeline access, closers' calendars, approved FAQ corpus, fee-disclosure scripts marked as compliance-locked text"
+   },
+   {
+    "role": "Client closer",
+    "dept": "sales and marketing",
+    "kind": "human",
+    "count": 2,
+    "why": "CLIENT-TRUST MOMENTS: the close — the conversation where a claimant decides to trust the firm with their case and their money — is named in the law itself. Deals and relationships stay human; the registry says so.",
+    "needs": "Qualified-lead queue with full agent-gathered context, engagement-letter templates (signed by the client, countersign queued to counsel), authority matrix for fee negotiation bounds",
+    "law": "money"
+   },
+   {
+    "role": "Brand and taste editor",
+    "dept": "sales and marketing",
+    "kind": "human",
+    "count": 1,
+    "why": "TASTE: the last inch of visual and verbal judgment — what the firm sounds like, which campaigns run, what never ships. Agents draft everything; this seat says yes, no, or not-like-that.",
+    "needs": "Approval queue from the content agents, brand asset library, financial-promotions sign-off training (taste calls here are also FCA-relevant), kill switch on any live campaign",
+    "law": "taste"
+   },
+   {
+    "role": "Platform and SRE agent",
+    "dept": "IT and ops",
+    "kind": "agent",
+    "count": 3,
+    "why": "Keeps the estate running: deploys, monitors, restarts, patches, capacity-plans; keeps the local models up so grunt work never silently spills to rented cloud. Loud stop, never silent failover.",
+    "needs": "Infra credentials scoped to non-production-data operations, monitoring stack, deploy pipelines, the health-gate endpoints, alert routing to humans for anything irreversible"
+   },
+   {
+    "role": "Security and gate agent",
+    "dept": "IT and ops",
+    "kind": "agent",
+    "count": 2,
+    "why": "Runs the trust rail on the firm's own code all day: mutation-gates every kernel, fuzzes the pure logic, sweeps for leaked secrets and orphaned access, and blocks any deploy whose gate is not clean. A green it cannot forge is the point.",
+    "needs": "CI access, the witness gate toolchain, secret-scanning across repos and stores, access-review feeds, authority to fail a build with a written reason"
+   },
+   {
+    "role": "Data and reporting agent",
+    "dept": "IT and ops",
+    "kind": "agent",
+    "count": 2,
+    "why": "Generates every metric surface from the one source of truth — case outcomes, SLA performance, regulatory MI, the morning brief — computed from the index, never hand-typed, so no number can drift from the data.",
+    "needs": "Read access to CRM, ledger and logs; report generators wired to source data; the morning-brief pipeline; zero write access to the systems it reports on"
+   },
+   {
+    "role": "Orchestrator (chief-of-staff) agent",
+    "dept": "leadership",
+    "kind": "agent",
+    "count": 1,
+    "why": "Runs the operating loop: maintains the one unsigned-door queue across all departments, ranks the managing director's first action each morning, tracks which preps are stale, and makes sure climbing the scoreboard never spams the key-holders.",
+    "needs": "Read access to every department's queue, the door-queue kernel, the brief generator, no keys of any kind by construction"
+   },
+   {
+    "role": "Managing director (master key-holder)",
+    "dept": "leadership",
+    "kind": "human",
+    "count": 1,
+    "why": "ALL FOUR LAWS converge here: final money doors, ultimate legal signatures, the taste and judgment calls nobody else can make, and the client-trust moments at the top of the ladder. Holds the master key the agent fleet provably cannot hold or fake.",
+    "needs": "Master signing key held personally outside every agent-readable store, the ranked morning brief, counsel on retainer before any first-of-kind door turns, direct oversight view of every queue",
+    "law": "money"
+   }
+  ],
+  "humanPct": 10
+ }
+}
