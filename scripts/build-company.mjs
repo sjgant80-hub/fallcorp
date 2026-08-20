@@ -101,7 +101,8 @@ footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid #3a3630;font-size
 <div class="hero"><b>${law.why}.</b><br>
 The stack this firm rents today: <b>${gbp(cost.annualPence)}/yr</b> in SaaS and per-seat AI —
 derived line by line below, never asserted. The sovereign build replaces the rented ninety
-with owned tools and local models; the humans keep exactly the seats that must be human.</div>
+with owned tools and local models; the humans keep exactly the seats that must be human.<br>
+<b><a href="https://sjgant80-hub.github.io/fallcorp-demo/">Watch this company RUN — Northgate Claims, a fictional day, live →</a></b></div>
 
 <div class="laws">
 ${HUMAN_LAWS.map(l => `<div class="lawbox"><b>${LAWICON[l]} the ${l} door</b><br>a seat is human if and only if it holds ${l === 'money' ? 'movement of real money' : l === 'legal' ? 'a legal signature' : l === 'taste' ? 'taste and judgment calls' : 'the client-trust moments — the closes, the hard conversations'}. Enforced by the gated org law, not by an org chart drawing.</div>`).join('\n')}
