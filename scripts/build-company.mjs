@@ -19,15 +19,22 @@ if (!law.ok) { console.error('REFUSED: ' + law.why); process.exit(1); }
 const cost = costModel(d.costs.stack);
 if (!cost.ok) { console.error('REFUSED: ' + cost.why); process.exit(1); }
 
-// dept name → coverage dept (the research used fuller names)
+// dept name → coverage dept (the research used fuller names). The audit found "finance and
+// escrow" silently matching nothing — four live tools and the escrow gap dropped from the page —
+// so the mapping is now EXPLICIT and a dept that matches nothing is SAID, never swallowed.
+const ALIAS = {
+  'finance and escrow': 'firm accounting and client escrow',
+  'sales and marketing': 'sales and crm',
+  'hr': 'hr and recruitment',
+  'it and ops': 'it',
+};
 const COV = {};
 for (const c of d.coverage.departments) COV[c.dept.toLowerCase()] = c;
 const covFor = (dept) => {
   const k = dept.toLowerCase();
-  for (const [name, c] of Object.entries(COV)) {
-    if (name.includes(k) || k.includes(name.split(' ')[0]) || name.split(' ')[0] === k.split(' ')[0]) return c;
-  }
-  return null;
+  const hit = COV[k] || COV[ALIAS[k]] || null;
+  if (!hit && k !== 'leadership') console.error(`note: dept "${dept}" has no research coverage mapped — the section renders without tools`);
+  return hit;
 };
 
 const depts = [...new Set(d.org.seats.map(s => s.dept))];

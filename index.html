@@ -96,7 +96,7 @@ with owned tools and local models; the humans keep exactly the seats that must b
 </section>
 <section class="dept">
   <h2>finance and escrow <span class="dn">5 agents · 2 humans</span></h2>
-  
+  <div class="tools">runs on: <a href="https://sjgant80-hub.github.io/fallclaimpractice/" target="_blank" rel="noopener">fallclaimpractice</a> · <a href="https://sjgant80-hub.github.io/fallledger/" target="_blank" rel="noopener">fallledger</a> · <a href="https://sjgant80-hub.github.io/fallinvoice/" target="_blank" rel="noopener">fallinvoice</a> · <a href="https://sjgant80-hub.github.io/fallap/" target="_blank" rel="noopener">fallap</a> · <a href="https://sjgant80-hub.github.io/fallbooks/" target="_blank" rel="noopener">fallbooks</a></div>
   <div class="seats"><div class="seat"><b>Ledger and reconciliation agent</b> <span class="n">× 3</span>
     <span class="ws ">DECLARED</span>
     <div class="why">Keeps the books all day: posts transactions, reconciles the client-money account daily against bank feeds, computes fee deductions per the disclosed schedule, and raises invoices. It can count money; it can never move it.</div>
@@ -111,7 +111,7 @@ with owned tools and local models; the humans keep exactly the seats that must b
 <div class="seat human"><b>Client money (escrow) officer</b> <span class="n">× 1</span>
       <span class="law">💷 holds the money door</span>
       <div class="why">MONEY MOVEMENT plus LEGAL SIGNATURE: releases settlement funds from the client account and personally attests the CASS-style client-money reconciliations regulators hold a named human to.</div></div></div>
-  
+  <div class="gap"><b>the honest gap:</b> The escrow register in fallclaimpractice is a device-local IDB record, not a regulated client-account with bank-feed reconciliation — for real CMC client money handling that reconciliation layer does not exist. No payroll engine adequate for 100 staff (fallbooks is RTI-shaped, not a payroll run). fallledger's display/filter paths still parse amounts their own way for restored files. konomium-vault (the encrypted accounting crown jewel) exists but was not audited this pass.</div>
 </section>
 <section class="dept">
   <h2>compliance and DSAR <span class="dn">6 agents · 1 human</span></h2>
