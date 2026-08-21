@@ -33,7 +33,12 @@ for (const c of d.coverage.departments) COV[c.dept.toLowerCase()] = c;
 const covFor = (dept) => {
   const k = dept.toLowerCase();
   const hit = COV[k] || COV[ALIAS[k]] || null;
-  if (!hit && k !== 'leadership') console.error(`note: dept "${dept}" has no research coverage mapped — the section renders without tools`);
+  if (!hit && k !== 'leadership') {
+    // a dropped department is a build FAILURE, not a note — the empty finance shelf shipped
+    // because this used to be silent, and a generator that swallows content cannot be trusted
+    console.error(`REFUSED: dept "${dept}" matches no research coverage — map it in ALIAS or the page lies by omission`);
+    process.exit(1);
+  }
   return hit;
 };
 
@@ -140,5 +145,13 @@ no number typed by hand · researched by the didy fan-out, judged at the frontie
 · Konomi Architecture</footer>
 </body></html>`;
 
+// the render-completeness gate: every researched tool must actually APPEAR on the page, and
+// every department's gap paragraph must ride — generated means WHOLE, or the build refuses
+for (const c of d.coverage.departments) {
+  for (const t of c.tools) {
+    if (!html.includes('>' + t.name + '<')) { console.error('REFUSED: researched tool "' + t.name + '" (' + c.dept + ') is not on the page'); process.exit(1); }
+  }
+  if (c.gaps && !html.includes(esc(c.gaps).slice(0, 60))) { console.error('REFUSED: the honest gap for "' + c.dept + '" is not on the page'); process.exit(1); }
+}
 writeFileSync(join(here, '..', 'index.html'), html);
 console.log(`index.html generated — ${(html.length / 1024).toFixed(0)}KB · ${law.why} · rented stack ${gbp(cost.annualPence)}/yr`);
